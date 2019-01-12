@@ -1,0 +1,440 @@
+﻿ 
+        
+        .divwindow
+        {
+            position: absolute;
+            display: block;
+            z-index: 999; 
+            background: url(../images/transparent.gif) top left repeat;
+        }
+        
+        
+        .divwindowCur
+        {
+            position: absolute;
+            display: block;
+            z-index: 1000;  
+            background: url(../images/transparent.gif) top left repeat;
+        }
+        
+        
+        .divwindow_box
+        {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            margin: 10px; 
+        }
+        .divwindow_border
+        {
+        	border:2px solid blue;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 999;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+        
+        
+        
+        
+        .divwindow_border_item
+        {
+            position: absolute;
+            display: block;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+        
+        
+        .dw_b_center
+        {
+            background: url(../images/transparent.png) top left repeat;
+            width: 100%;
+            height: 100%;
+        }
+        
+         
+        
+        
+        .dw_b_t
+        {
+            width: 100%;
+            height: 8px;
+            top: -8px;
+            left: 0;
+            overflow: hidden;
+            background: url(../images/sprite_repeat_x_png.png) repeat-x 0 -80px; 
+        }
+        .dw_b_rt
+        {
+            top: -8px;
+            right: -8px;
+            width: 8px;
+            height: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_main_png.png) no-repeat -12px 0;
+        }
+        .dw_b_r
+        {
+            right: -8px;
+            height: 100%;
+            width: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_repeat_y_png.png) repeat-y -12px 0;
+        }
+        .dw_b_rb
+        {
+            bottom: -8px;
+            right: -8px;
+            width: 8px;
+            height: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_main_png.png) no-repeat -12px -12px;
+        }
+        .dw_b_b
+        {
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_repeat_x_png.png) repeat-x 0px -92px;
+        }
+        .dw_b_lb
+        {
+            bottom: -8px;
+            left: -8px;
+            width: 8px;
+            height: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_main_png.png) no-repeat 0 -12px;
+        }
+        .dw_b_l
+        {
+            left: -8px;
+            height: 100%;
+            width: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_repeat_y_png.png) repeat-y 0 0;
+        }
+        .dw_b_lt
+        {
+            top: -8px;
+            left: -8px;
+            width: 8px;
+            height: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_main_png.png) no-repeat 0 0;
+        }
+        
+        
+        
+         
+        .dw_b_center_alert
+       {
+            background: url(../images/transparent.png) top left repeat;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .dw_b_t_alert
+        {
+            width: 100%;
+            height: 8px;
+            top: -8px;
+            left: 0;
+            overflow: hidden;
+            background: url(../images/sprite_repeat_x_png.png) repeat-x 0 -100px; 
+        }
+        .dw_b_rt_alert
+        {
+            top: -8px;
+            right: -8px;
+            width: 8px;
+            height: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_main_png.png) no-repeat -32px 0;
+        }
+        .dw_b_r_alert
+        {
+            right: -8px;
+            height: 100%;
+            width: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_repeat_y_png.png) repeat-y -32px 0;
+        }
+        .dw_b_rb_alert
+        {
+            bottom: -8px;
+            right: -8px;
+            width: 8px;
+            height: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_main_png.png) no-repeat -32px -12px;
+        }
+        .dw_b_b_alert
+        {
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_repeat_x_png.png) repeat-x 0 -112px;
+        }
+        .dw_b_lb_alert
+        {
+            bottom: -8px;
+            left: -8px;
+            width: 8px;
+            height: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_main_png.png) no-repeat -20px -12px;
+        }
+        .dw_b_l_alert
+        {
+            left: -8px;
+            height: 100%;
+            width: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_repeat_y_png.png) repeat-y -20px 0;
+        }
+        .dw_b_lt_alert
+        {
+            top: -8px;
+            left: -8px;
+            width: 8px;
+            height: 8px;
+            overflow: hidden;
+            background: url(../images/sprite_main_png.png) no-repeat -20px 0;
+        }
+        
+        
+        
+        .divwindow_titlebar_alert
+        {
+            background: url(../images/window_cur.png) top left repeat;
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 20px;
+            z-index: 1000; 
+            cursor:default
+        }
+        
+         
+        
+        
+        
+        
+        .divwindow_content
+        {
+            position: absolute;
+            z-index: 999;
+            display: block;
+            width: 100%;
+            height: 100%;
+            font: 12px/1.5 Trebuchet MS,tahoma,helvetica,clean,sans-serif;
+        }
+        
+        
+        
+        .divwindow_titlebar
+        {
+            background: url(../images/window.png) top left repeat;
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 20px;
+            z-index: 1000; 
+            cursor:default
+        }
+        
+        .divwindow_titlebuttons
+        { 
+            display: inline-block; 
+            position: absolute;
+            z-index: 1000;
+            right:0px;
+        }
+        
+        
+        .divwindow_title
+        { 
+            z-index: 1000;
+            text-align: left;
+            display: inline-block;
+            height: 20px; 
+            padding-left:3px;
+            font-weight: bold; 
+        }
+        
+        
+        .divwindow_body
+        {
+            position: absolute;
+            z-index: 1000;
+            display: block;
+        }
+        
+        
+        .divwindow_iframe
+        {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+        }
+        
+        
+        
+        
+        .divwindow_resize_item
+        {
+            position: absolute;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: initial;
+            display: block;
+            background-position: initial initial;
+            background-repeat: initial initial;
+        }
+        
+        .divwindow_resize_t
+        {
+            cursor: n-resize;
+            z-index: 1000;
+            left: 0px;
+            top: -5px;
+            width: 100%;
+            height: 5px;
+        }
+        .divwindow_resize_r
+        {  
+            cursor: e-resize;
+            z-index: 1000;
+            right: -5px;
+            top: 0px;
+            width: 5px;
+            height: 100%; 
+        }
+        .divwindow_resize_b
+        { 
+            cursor: s-resize;
+            z-index: 1000;
+            left: 0px;
+            bottom: -5px;
+            width: 100%;
+            height: 5px;
+        }
+        .divwindow_resize_l
+        {
+            cursor: w-resize;
+            z-index: 1000;
+            left: -5px;
+            top: 0px;
+            width: 5px;
+            height: 100%;
+        }
+        .divwindow_resize_rt
+        {
+            cursor: ne-resize;
+            z-index: 1001;
+            right: -5px;
+            top: -5px;
+            width: 5px;
+            height: 5px;
+        }
+        .divwindow_resize_rb
+        {
+            cursor: se-resize;
+            z-index: 1001;
+            right: -5px;
+            bottom: -5px;
+            width: 5px;
+            height: 5px;
+        }
+        .divwindow_resize_lb
+        {
+            cursor: sw-resize;
+            z-index: 1001;
+            left: -5px;
+            bottom: -5px;
+            width: 5px;
+            height: 5px;
+        }
+        .divwindow_resize_lt
+        {
+            cursor: nw-resize;
+            z-index: 1001;
+            left: -5px;
+            top: -5px;
+            width: 5px;
+            height: 5px;
+        }
+        
+        
+        
+        .divwindow_titlebuttons_item
+        {
+        	text-align: center;
+            cursor: pointer; 
+            margin-left: 4px;
+            height: 17px;
+            width: 17px; 
+            background: url(../images/sprite_main_png.png) no-repeat; 
+        }
+        
+ 
+        .divwindow_titlebuttons_close
+        {
+            background-position: -123px -24px;
+        }
+        .divwindow_titlebuttons_max
+        {
+            background-position: -94px -24px;
+        }
+        .divwindow_titlebuttons_restore
+        {
+            background-position: -183px -24px;
+        }
+        .divwindow_titlebuttons_min
+        {
+            background-position: -63px -24px;
+        }
+ 
+ 
+		.divwindow_Closeob
+		{
+			height:18px;
+			width:18px;
+			float:right; 
+			position: relative;
+			display:none; 
+			background-image:url(../images/close_ob.png);
+			cursor:pointer;  
+		}
+ 
+ 
+        .divlink
+        {
+        	cursor:pointer;
+        	line-height:20px;
+        	height:20px;
+        	margin:0px 10px 5px 10px;
+        	z-index:1000;
+        	position:absolute; 
+        	font-weight:bold;
+        	
+        	
+        }

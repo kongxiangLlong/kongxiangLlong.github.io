@@ -1,0 +1,170 @@
+﻿
+
+#title
+{
+    background: url('../images/titleDongying.png') no-repeat;
+    width: 644px;
+    height: 90px;
+    margin-left:170px;
+}
+
+
+.navigationbar
+{
+    display: block;
+    margin: 5px;
+}
+        
+.navigationbar_item
+{
+    float: left;
+    display: inline-block;
+    margin: 5px;
+    cursor:pointer;
+    border:1px solid black;
+}
+
+
+
+.menubuttonsbar
+{
+	margin:10px;
+    width: 460px; 
+    overflow: hidden;
+    position:absolute;   
+    background:url('../images/transparent.png');
+    cursor:default;
+    bottom:60px;
+    height:0px; 
+}
+
+ 
+.menubuttonsbar_border
+{
+	display:none;
+}
+ 
+ 
+
+#menubuttonsbar_border_rt
+{ 
+    position:absolute;   
+    height:46px;
+    width: 23px; 
+    top:0px;
+    right:0px;  
+    background: url(../images/menubuttonsbarbg.png) no-repeat -43px 0px; 
+}
+
+#menubuttonsbar_border_r
+{
+    position:absolute;   
+    height:262px;
+    width:23px; 
+    top:46px;
+    right:0px;   
+    background: url(../images/menubuttonsbarbg_r.png);
+}
+
+
+#menubuttonsbar_border_rb
+{ 
+    position:absolute;   
+    height:23px;
+    width: 23px; 
+    right:0px;  
+    bottom:0px;
+    background: url(../images/menubuttonsbarbg.png) no-repeat -43px -44px; 
+}
+
+
+ 
+
+ 
+#menubuttonsbar_border_bl
+{
+    position:absolute;
+    height: 23px; 
+    width:46px;
+    bottom:0px;
+    left:0px;  
+    background: url(../images/menubuttonsbarbg.png) no-repeat -0px -44px; 
+}
+ 
+#menubuttonsbar_border_b
+{
+    position:absolute;
+    height:23px;
+    width:432px; 
+    bottom:0px;
+    left:46px;   
+    background: url(../images/menubuttonsbarbg_b.png);
+}
+ 
+ 
+        
+.menubuttons
+{
+    width: 1386px; 
+    position:relative; 
+    overflow: hidden; 
+}
+        
+        
+.menubuttons_box
+{
+    display: inline-block;
+    margin: 5px 5px 10px 5px; 
+    width: 450px; 
+    float: left;
+    overflow: hidden;
+    
+}
+        
+.menubuttons_box_item
+{
+    float: left;
+    display: inline-block;
+    margin: 10px;
+    text-align: center; 
+    cursor:pointer;
+    width: 78px;
+    height: 60px;
+    font: 12px/1.5 Trebuchet MS,tahoma,helvetica,clean,sans-serif;
+    overflow: hidden;
+    
+    
+}
+        
+.menubuttons_box_item_icon
+{
+    width: 32px;
+    height: 32px;
+    margin: 5px auto 2px auto;
+}
+
+
+
+.menubuttons_box_item_icon img
+{
+    width: 32px;
+    height: 32px;
+    border:none;
+}
+
+
+        
+.menubuttons_box_item_title
+{
+    width: 80px;
+    overflow: hidden;
+    height: 18px;
+    line-height: 20px;
+    margin:auto;
+    background-color:#A1ABB1;
+    padding:auto;
+}
+        
+.menubuttons_box_item_title div
+{
+}

@@ -1,0 +1,108 @@
+#fancymenu {
+	POSITION: absolute; PADDING-BOTTOM: 15px; MARGIN: 0px 0px 0px 15px; PADDING-LEFT: 15px; WIDTH: 383px;   HEIGHT: 24px; PADDING-TOP: 5px; BACKGROUND: url(../../images/fancymenu/bg.gif);   left:-410px;  bottom:40px;z-index:100;
+}
+#pictureselect {
+	POSITION: relative; HEIGHT: 1%
+}
+#fancymenu UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#pictureselect {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#fancymenu UL LI {
+	LIST-STYLE-TYPE: none; FLOAT: left; LIST-STYLE-IMAGE: none
+}
+#pictureselect LI {
+	LIST-STYLE-TYPE: none; FLOAT: left; LIST-STYLE-IMAGE: none
+}
+#fancymenu UL LI A {
+	Z-INDEX: 10; POSITION: relative; TEXT-INDENT: -500em; DISPLAY: block; FLOAT: left; HEIGHT: 30px; OVERFLOW: hidden
+}
+#pictureselect LI A {
+	Z-INDEX: 10; POSITION: relative; TEXT-INDENT: -500em; DISPLAY: block; FLOAT: left; HEIGHT: 30px; OVERFLOW: hidden
+}
+#pictureselect LI {
+	HEIGHT: 54px
+}
+#pictureselect LI A {
+	WIDTH: 62px; HEIGHT: 54px
+}
+#menu_home A {
+	WIDTH: 59px; BACKGROUND: url(../../images/fancymenu/menu_home.png) no-repeat center 50%
+}
+#menu_plantatree A {
+	WIDTH: 119px; BACKGROUND: url(../../images/fancymenu/menu_plantatree.png) no-repeat center 50%
+}
+#menu_travel A {
+	WIDTH: 70px; BACKGROUND: url(../../images/fancymenu/menu_travel.png) no-repeat center 50%
+}
+#menu_rideanelephant A {
+	WIDTH: 142px; BACKGROUND: url(../../images/fancymenu/menu_rideanelephant.png) no-repeat center 50%
+}
+
+
+
+
+
+#menu_fancymenu_1 A
+{
+	WIDTH: 118px; BACKGROUND: url(../../images/fancymenu/menu_fancymenu_1.png) no-repeat center 50%
+}
+
+ 
+#menu_fancymenu_2 A
+{
+	WIDTH: 118px; BACKGROUND: url(../../images/fancymenu/menu_fancymenu_2.png) no-repeat center 50%
+}
+ 
+#menu_fancymenu_3 A
+{
+	WIDTH: 118px; BACKGROUND: url(../../images/fancymenu/menu_fancymenu_3.png) no-repeat center 50%
+}
+
+
+
+
+#nopicture A {
+	BACKGROUND: url(../../images/fancymenu/no_picture.gif) no-repeat center 50%
+}
+#picture_1 A {
+	BACKGROUND: url(../../images/fancymenu/picture_1.jpg) no-repeat center 50%
+}
+#picture_2 A {
+	BACKGROUND: url(../../images/fancymenu/picture_2.jpg) no-repeat center 50%
+}
+#picture_3 A {
+	BACKGROUND: url(../../images/fancymenu/picture_3.jpg) no-repeat center 50%
+}
+#picture_4 A {
+	BACKGROUND: url(../../images/fancymenu/picture_4.jpg) no-repeat center 50%
+}
+#fancymenu LI.background {
+	Z-INDEX: 8; POSITION: absolute; BACKGROUND: url(../../images/fancymenu/bg_menu_right.gif) no-repeat right top; 
+}
+#fancymenu .background .left {
+	BACKGROUND: url(../../images/fancymenu/bg_menu.gif) no-repeat left top; HEIGHT: 30px; MARGIN-RIGHT: 9px
+}
+#pictureselect LI.background {
+	Z-INDEX: 8; POSITION: absolute; WIDTH: 53px; BACKGROUND: url(../../images/fancymenu/bg_images.gif) no-repeat 50% top; VISIBILITY: hidden
+}
+#pictureselect LI.background .left {
+	DISPLAY: none
+}
+#userprofile {
+	PADDING-BOTTOM: 0px; MARGIN-TOP: 15px; PADDING-LEFT: 15px; WIDTH: 360px; PADDING-RIGHT: 15px; BACKGROUND: url(../../images/fancymenu/bg_form.gif) no-repeat left top; HEIGHT: 180px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+#userprofile H4 {
+	FONT: bold 11px Verdana; MARGIN-BOTTOM: 10px
+}
+#userprofile P.input {
+	PADDING-BOTTOM: 0px !important; PADDING-LEFT: 0px !important; PADDING-RIGHT: 0px !important; BACKGROUND: #ebebeb; OVERFLOW: hidden; PADDING-TOP: 0px !important
+}
+#userprofile P.input INPUT {
+	BORDER-BOTTOM: #d4d4d4 1px solid; BORDER-LEFT: #d4d4d4 1px solid; PADDING-BOTTOM: 3px; MARGIN: 3px; PADDING-LEFT: 4px; WIDTH: 348px; PADDING-RIGHT: 0px; DISPLAY: block; BORDER-TOP: #d4d4d4 1px solid; BORDER-RIGHT: #d4d4d4 1px solid; PADDING-TOP: 3px
+}
+#userprofile P.input INPUT:focus {
+	BORDER-BOTTOM: #999 1px solid; BORDER-LEFT: #999 1px solid; BORDER-TOP: #999 1px solid; BORDER-RIGHT: #999 1px solid
+}

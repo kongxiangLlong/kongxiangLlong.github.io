@@ -1,0 +1,249 @@
+BODY {
+	MARGIN: 4px 0px; BACKGROUND: #fff; COLOR: #000
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TABLE {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+TD {
+	FONT-FAMILY: Arial,simsun
+}
+TH {
+	FONT-FAMILY: Arial,simsun
+}
+P {
+	FONT-FAMILY: Arial,simsun
+}
+DIV {
+	FONT-FAMILY: Arial,simsun
+}
+INPUT {
+	FONT-FAMILY: Arial,simsun
+}
+LI {
+	FONT-FAMILY: Arial,simsun
+}
+TD {
+	LINE-HEIGHT: 150%; FONT-SIZE: 12px
+}
+P {
+	LINE-HEIGHT: 150%; FONT-SIZE: 12px
+}
+DIV {
+	LINE-HEIGHT: 150%; FONT-SIZE: 12px
+}
+UL {
+	LIST-STYLE-TYPE: none
+}
+LI {
+	LIST-STYLE-TYPE: none
+}
+DL {
+	LIST-STYLE-TYPE: none
+}
+DD {
+	LIST-STYLE-TYPE: none
+}
+DT {
+	LIST-STYLE-TYPE: none
+}
+A:link {
+	COLOR: #0033cc; TEXT-DECORATION: underline
+}
+A:visited {
+	TEXT-DECORATION: underline
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:active {
+	TEXT-DECORATION: underline
+}
+.blue A {
+	COLOR: #03c
+}
+.wh {
+	WIDTH: 100%
+}
+.wh_600 {
+	WIDTH: 600px
+}
+.wh_980 {
+	WIDTH: 980px
+}
+.mg_b10 {
+	MARGIN-BOTTOM: 10px
+}
+.bg {
+	BACKGROUND: #edf7ff
+}
+.bd {
+	BORDER-BOTTOM: #b2d0ea 1px solid; BORDER-LEFT: #b2d0ea 1px solid; BORDER-TOP: #b2d0ea 1px solid; BORDER-RIGHT: #b2d0ea 1px solid
+}
+.bd_t {
+	BORDER-TOP: #b2d0ea 1px solid
+}
+.bd_b {
+	BORDER-BOTTOM: #b2d0ea 1px solid
+}
+.ft_l {
+	FLOAT: left
+}
+.ft_r {
+	FLOAT: right
+}
+.ta_l {
+	TEXT-ALIGN: left
+}
+.ta_m {
+	TEXT-ALIGN: center
+}
+.ta_r {
+	TEXT-ALIGN: right
+}
+.fs {
+	FONT-SIZE: 100%
+}
+.fs_10 {
+	FONT-SIZE: 10px
+}
+.fs_14 {
+	FONT-SIZE: 14px
+}
+.bt {
+	FONT-SIZE: 14px
+}
+.more .gd {
+	FONT-SIZE: 14px
+}
+.bt {
+	CURSOR: hand
+}
+.more A {
+	CURSOR: hand
+}
+.more A:hover {
+	CURSOR: hand; TEXT-DECORATION: none
+}
+.more A:active {
+	COLOR: #0033cc; CURSOR: hand; TEXT-DECORATION: none
+}
+.more {
+	COLOR: #03c
+}
+.logo {
+	MARGIN: 0px 8px
+}
+.s {
+	BORDER-BOTTOM: #69c 1px solid; BORDER-LEFT: #69c 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 2px; WIDTH: 22em; PADDING-RIGHT: 0px; HEIGHT: 1.75em; FONT-SIZE: 16px; BORDER-TOP: #69c 1px solid; MARGIN-RIGHT: 8px; BORDER-RIGHT: #69c 1px solid; PADDING-TOP: 4px
+}
+.bt {
+	WIDTH: 5em; HEIGHT: 2em; MARGIN-RIGHT: 4px
+}
+.k {
+	LINE-HEIGHT: 0px; HEIGHT: 0px; CLEAR: both; FONT-SIZE: 1px
+}
+.x {
+	LINE-HEIGHT: 50%
+}
+.menu A {
+	MARGIN: 0px 0.5em
+}
+.menu B {
+	MARGIN: 0px 0.5em
+}
+.menu A {
+	COLOR: #03c
+}
+.more {
+	PADDING-LEFT: 0.5em; PADDING-TOP: 3px
+}
+.more A {
+	TEXT-DECORATION: none
+}
+.more DIV A {
+	TEXT-DECORATION: none
+}
+.more A:visited {
+	COLOR: #03c; TEXT-DECORATION: none
+}
+.more DIV A:visited {
+	COLOR: #03c; TEXT-DECORATION: none
+}
+.more .gd {
+	TEXT-DECORATION: underline
+}
+.more DIV {
+	Z-INDEX: 50; POSITION: absolute; MARGIN: 19px 0px 0px -48px; DISPLAY: none; BACKGROUND: #fff
+}
+.more DIV A {
+	WIDTH: 80px; DISPLAY: block
+}
+.more DIV A:hover {
+	BACKGROUND: #36c; COLOR: #fff
+}
+.more DIV LI {
+	LINE-HEIGHT: 24px; LIST-STYLE-TYPE: none
+}
+.ss {
+	MARGIN-BOTTOM: 4px; CLEAR: left
+}
+.bh {
+	POSITION: absolute; HEIGHT: 0px; FONT-SIZE: 0px; TOP: 23px
+}
+.user A {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 0px
+}
+.user B {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 0px
+}
+.user A {
+	COLOR: #03c
+}
+.user LABEL {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 8px; PADDING-TOP: 0px
+}
+.nav {
+	FONT-FAMILY: simsun
+}

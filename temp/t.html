@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模板助手</title>
+
+	<link rel="stylesheet" href="/lib/Font-Awesome-3.2.1/css/font-awesome.min.css"> 
+	<link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css"> 
+	<link rel="stylesheet" href="/lib/toaster/toaster.css"> 
+
+	<script src="/lib/angular/angular.min.js"></script>
+	<script src="/lib/angular/angular-animate.min.js"></script>
+	<script src="/lib/store.min.js"></script>
+	<script src="/lib/bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="/lib/toaster/toaster.js"></script>
+</head>
+<style>
+	*{
+		margin:0 0;
+		padding:0 0;
+		font-family:DeliciousRoman,arial,Microsoft Yahei,\5b8b\4f53,sans-serif;
+		text-decoration:none;
+		font-weight:400;
+		font-style:normal;
+		word-break:break-all;
+	}
+	html,body{
+		font-family:sans-serif;
+		-ms-text-size-adjust:100%;
+		-webkit-text-size-adjust:100%;
+		width: 100%;
+		height: 100%;
+	} 
+
+	body{  
+	}
+	body:after{ 
+		clear: both;
+		display: block;
+		content: "";
+	}
+
+	var,p{
+		width: calc( 50% - 10px );
+		height: 100%;
+		float: left;
+		box-sizing:border-box; 
+	    position: relative;
+	}
+
+
+	textarea{
+    	resize:none; 
+		overflow: auto;
+		padding: 5px;
+		font-size: 16px;
+		line-height: 22px;
+	    border: 1px solid #5e5b64;
+    	border-radius: 3px;  
+		box-sizing:border-box; 
+		height: 100%;
+		width: 100%;
+		background: transparent;
+	}
+
+
+	big table{
+
+	    position: absolute; 
+	    text-align: center;
+	    z-index: -1;
+	    height: 100%;
+	    width: 100%;
+	    top:0;
+	    bottom: 0;
+	    right: 0;
+	    left: 0;
+
+
+	} 
+	big table td{ 
+	    font-size: 58px;
+	    color: #e6e6e6;
+	    letter-spacing: 10px;
+	    font-family:  STENCIL,SimHei;
+	}
+	p{
+		float: right;
+		overflow: auto;
+		padding: 5px;
+		font-size: 16px;
+		line-height: 22px;
+	    border: 1px solid #5e5b64;
+    	border-radius: 3px;  
+	}
+	
+
+	h1{ 
+		padding-bottom: 10px;
+	}
+	dt{ 
+	}
+ 
+	dt span{
+		padding: 5px 10px 10px;	
+		display: block;
+		float: left;
+	}
+
+	dt:after{ 
+		clear: both;
+		display: block;
+		content: "";
+	}
+	input{
+		line-height: 30px;
+		height: 30px;
+	    border: 1px solid #5e5b64;
+    	border-radius: 3px;
+    	font-size: 14px;
+    	padding: 0 5px;
+	}
+
+
+	big{
+    	height: calc( 100% - 50px );
+    	display: block;
+    	position: relative;
+	}
+
+	center{
+		text-align: left;
+		box-sizing: border-box; 
+    	min-width: 800px;
+    	padding: 20px;
+		width: 100%;
+		height: 100%;
+	}
+	center:after{ 
+		clear: both;
+		display: block;
+		content: "";
+	}
+
+	menu{
+		position:absolute;
+		top: 50%;
+		/*border:1px solid black;*/
+		left :-180px;
+		width: 190px;
+		margin-top:-30px;
+		transition:All 0.4s ease-in-out;
+		-webkit-transition:All 0.4s ease-in-out;
+		-moz-transition:All 0.4s ease-in-out;
+		-o-transition:All 0.4s ease-in-out;
+
+		background-color: #DCDCFF;
+
+
+
+		background: -ms-linear-gradient(left, #fff,  #DCDCFF 80%);        /* IE 10 */ 
+		background:-moz-linear-gradient(left,#fff,#DCDCFF 80%);/*火狐*/   
+		background: -webkit-linear-gradient(left, #fff, #DCDCFF 80%);   /*Safari5.1 Chrome 10+*/ 
+		background: -o-linear-gradient(left, #fff, #DCDCFF 80%);  /*Opera 11.10+*/
+	}
+	menu a{
+		display: block;
+	    background-color: #dcdcff;
+	    width: 10px;
+	    height: 100%;
+	    position: absolute;
+	    right: 0;
+	    top: 0; 
+	    cursor: pointer; 
+
+	}
+	menu ul{
+		width: 170px;
+		margin: 10px 0 10px 10px;
+	}
+
+ 
+	menu:hover {
+		transform:translate(180px,0);
+		-webkit-transform:translate(180px,0);
+		-moz-transform:translate(180px,0);
+		-o-transform:translate(180px,0);
+		-ms-transform:translate(180px,0);
+	}
+	menu ul li:hover{
+		background-color: #dcdcff;
+	}
+
+	menu ul li{
+		line-height: 20px;
+		text-indent: 8px;
+		cursor: pointer;
+	}
+	
+	b{
+
+	    position: absolute;
+	    bottom: 0;
+	    right: 0;
+		box-sizing:border-box;
+		padding:5px 10px;
+	}
+
+	b i{
+		margin-left: 6px;
+	}
+
+	i.cur{
+		cursor: pointer;
+	}
+
+	i.cur:hover{
+		color:#006599;
+	}
+
+
+	.savediv{
+		padding: 20px;
+		box-sizing:border-box;
+	}
+</style>
+<body   ng-app="temp" ng-controller="TempCtrl"  ng-init="init()">  
+	
+	<center>
+		<h1>模板处理</h1>   
+
+		<parametergeneration content='leftStr' id='pg'> 
+		</parametergeneration>
+
+		<big content='leftStr'>
+			
+			<table>
+				<tr>
+					<td ng-bind='actionObj.title' ng-show='isLoad'>sdfsdfsdf</td>
+				</tr>
+			</table>
+			<var><textarea id='left' scrollsyn='right' ng-model="leftStr"></textarea>
+			<b  ng-show='showBtns'>
+			<i  ng-show='showAdd' class="icon-plus icon-2x cur" ng-click='showSave()'></i> 
+			<i  ng-show='showUpdate' class="icon-save icon-2x cur" ng-click='showSave()'></i> 
+			<!-- <i  ng-show='show' class="icon-trash icon-2x cur" ng-click='toaster()'></i>  -->
+			</b>
+			</var>
+			<p id='right'  scrollsyn='left'  compile="leftStr" ></p> 
+
+		</big>
+	</center>
+
+	<menu>
+	<ul> 
+    	<li ng-repeat="obj in objList track by $index" ng-click='loadDate(obj)'>{{obj.title}}</li> 
+	</ul>
+	<a></a>
+	</menu>
+
+	<toaster-container></toaster-container>
+</body>
+<script>
+
+
+(function(angular) {
+  'use strict';
+
+
+	var app = angular.module('temp', ['ui.bootstrap','ngAnimate','toaster']);
+
+	app.directive('hello', function() {
+	    return {
+	        restrict: 'E',
+	        template: '<div>Hi there</div>',
+	        replace: true
+	    };
+	});
+
+	//两边同步数据
+    app.directive('compile',['$compile',function($compile) {
+		// directive factory creates a link function
+		return function(scope, element, attrs) {
+			scope.$watch(
+				function(scope) {
+				 // watch the 'compile' expression for changes
+					return scope.$eval(attrs.compile);
+				},
+				function(value) {
+					element.empty(); 
+					if(!value) return; 
+					value=value.
+							replace(/\t/g,'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;').
+							replace(/</g,'&lt;').
+							replace(/>/g,'&gt;').
+							replace(/\n/g,'<br/>').
+							replace(/ /g,'&nbsp;');
+
+					// when the 'compile' expression changes
+					// assign it into the current DOM
+					element.html(value);
+
+					// compile the new DOM and link it to the current
+					// scope.
+					// NOTE: we only compile .childNodes so that
+					// we don't get into infinite loop compiling ourselves
+					$compile(element.contents())(scope);
+				}
+			);
+		};
+    }]);
+
+
+
+
+	//两边同步滚动条
+    app.directive('scrollsyn', function() {
+			// directive factory creates a link function
+			return {
+				link: function (scope, element, attrs, controller) {
+					scope.scrollsyn='';
+					element.bind('scroll',function(){  
+						var tempid= attrs.id;
+						var scrollsyn=attrs.scrollsyn;
+						if(scope.scrollTar==scrollsyn){scope.scrollTar='';return;};
+						scope.scrollTar=tempid;
+						document.getElementById(scrollsyn).scrollTop=element[0].scrollTop;  
+					});
+			} 
+		};
+	});
+
+
+
+
+
+	//根据字符内容遍历生成{{}}对象赋值列表
+    app.directive('parametergeneration', ['$compile',function($compile) { 
+	    return {
+	        restrict: 'E', 
+	        template: '<dt></dt>',
+	        replace: true,
+	        link:  function (scope, element, attrs, controller)  {
+				scope.$watch(
+					function(scope) {
+					 // watch the 'compile' expression for changes
+						return scope.$eval(attrs.content);
+					},
+					function(value) {   
+						element.empty(); 
+						if(!value) return;
+						var m = value.match(/([^\{\{\}\}]+)(?=\}\})/g);
+
+						if(!m) return;
+
+						var arr=new Array();
+						for(var i=0;i<m.length;i++){
+							if(arr.contains(m[i])){
+								continue;
+							}
+							arr.push(m[i]);
+							var x=$compile('<span><em>'+m[i]+'</em>:&nbsp;<input type="text"　 value="" ng-model="'+m[i]+'" /></span>')(scope);
+							element.append(x);
+						} 
+
+
+					}
+				);
+	        }, 
+	    }; 
+	}]);
+ 
+
+
+
+
+	//页面 big 自适用高度
+    app.directive('big',function($window) { 
+	    return {
+	        restrict: 'E',  
+	        link:  function (scope, element, attrs, controller)  {
+	        	scope.change=function(value){ 
+
+
+	        		var heights=0;
+	        		var objs=element[0].parentNode.childNodes;
+	        		for (var i = objs.length - 1; i >= 0; i--) {
+
+	        			if( objs[i].offsetHeight &&objs[i]!=element[0]){
+	        				heights+=objs[i].offsetHeight;
+	        			}
+	        		}
+ 
+					element[0].style.height=(window.innerHeight-heights-70)+'px'; 
+	        	}
+
+				scope.$watch(
+					function(scope) {
+					 // watch the 'compile' expression for changes
+						return scope.$eval(attrs.content);
+					},
+					scope.change
+				);
+
+
+        		var w = angular.element($window);
+
+		        w.bind('resize',scope.change);
+
+
+	        }, 
+	    }; 
+	});
+
+
+	app.controller('TempCtrl', ['$scope','$rootScope','$compile','$modal','toaster',
+		function($scope,$rootScope,$compile,$modal,toaster) {
+
+		$scope.objList=[];
+
+		$scope.actionObj={
+			title:'',
+			leftStr:'',
+			date:null
+		}
+
+		$scope.showBtns=false
+		$scope.showAdd=true;
+		$scope.showDel=false;
+		$scope.showUpdate=false;
+
+		$scope.isLoad=false;
+
+
+		$scope.init=function(){
+			$scope.initStoreList();
+		}
+
+
+
+		$scope.initStoreList=function(){
+			 $scope.objList=store.get('templist');
+			 if(!$scope.objList){ 
+			 	$scope.objList=[] 
+
+			 	//e.g 
+				$scope.objList=[	
+					{ 
+						leftStr:"模板 1:{{key1}} 2:{{key2}} 2:{{key3}}",
+						title:"T"
+					}
+				];
+			 };
+			 	//e.g 
+			 $scope.loadDate($scope.objList[0]);
+			 console.log($scope.objList);	
+		}
+
+
+
+
+
+
+		$scope.saveDate=function(obj){ 
+			$scope.actionObj=obj
+
+			var getObj=$scope.objList.getByTitle(obj.title);
+			if(getObj){
+				getObj=$scope.actionObj;
+			}else{
+				$scope.objList.push($scope.actionObj);
+ 			}
+			$scope.showBtns=false;
+			$scope.showAdd=false;
+			$scope.showDel=true;
+			$scope.showUpdate=true;
+			
+			$scope.isLoad=true; 
+
+			store.set('templist', $scope.objList)
+		}
+
+
+
+		$scope.loadDate=function(obj){
+
+			$scope.leftStr=obj.leftStr;
+
+			$scope.actionObj=obj;
+
+			$scope.showBtns=false;
+			$scope.showAdd=false;
+			$scope.showDel=true;
+			$scope.showUpdate=true;
+			
+			$scope.isLoad=true; 
+
+		}
+
+
+
+
+		$scope.$watch('leftStr', function(newValue, oldValue) {  
+		    // console.log(newValue+ '===' +oldValue);  
+
+		    if(newValue!=oldValue&&newValue!=$scope.actionObj.leftStr){
+				$scope.showBtns=true;
+		    }else if(newValue==$scope.actionObj.leftStr){
+				$scope.showBtns=false;
+		    }
+		});  
+		
+
+		$scope.showSave=function(){
+
+			$scope.actionObj.leftStr=$scope.leftStr;
+
+            var modalInstance = $modal.open({  
+	            templateUrl : 'edit.html', 
+                controller : EditCtrl ,
+				resolve : {  
+					obj : function() {  
+						return $scope.actionObj;  
+					},
+					isLoad: function(){ 
+						return $scope.isLoad;
+					}
+				}  
+	        });  
+
+
+			modalInstance.result.then(function(obj){   
+
+				if($scope.isLoad){
+					$scope.saveDate(obj); 
+					toaster.success("保存成功");
+				}else{ 
+					if($scope.objList.containsByTitle(obj.title)){
+						toaster.warning("Title [ "+obj.title+" ] 已存在");
+						$scope.showSave();
+						return;
+					} 
+					obj.date=new Date();
+					$scope.saveDate(obj); 
+					toaster.success("添加成功");
+				}
+
+			});
+		};
+
+
+		$scope.toaster=function(){
+        	toaster.success({title: "title", body:"text1"});
+		}
+
+ 
+	}]);
+
+
+
+	var EditCtrl = ['$scope','$modalInstance','obj','isLoad', function($scope, $modalInstance,obj,isLoad) {  
+
+		$scope.obj = obj;   
+		$scope.isLoad = isLoad;
+		$scope.title = isLoad?'Save':'New';
+        $scope.submit = function() {  
+            $modalInstance.close($scope.obj);  
+        };  
+        $scope.cancel = function() {  
+            $modalInstance.dismiss('cancel');  
+        };  
+
+ 
+    }];  
+
+
+})(window.angular);
+
+
+Array.prototype.contains = function (obj) {  
+    var i = this.length;  
+    while (i--) {  
+        if (this[i] === obj) {  
+            return true;  
+        }  
+    }  
+    return false;  
+}  
+
+
+
+Array.prototype.containsByTitle = function(title){
+    var i = this.length;  
+    while (i--) {  
+        if (this[i].title === title) {  
+            return true;  
+        }  
+    }  
+    return false;  
+}
+
+Array.prototype.getByTitle = function(title){
+    var i = this.length;  
+    while (i--) {  
+        if (this[i].title === title) {  
+            return this[i];  
+        }  
+    }  
+    return null;  
+}
+
+ 
+</script>
+</html>

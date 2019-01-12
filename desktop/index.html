@@ -1,0 +1,81 @@
+ 
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head runat="server">
+    <title>krokodil</title>
+         
+    <?import namespace="v" implementation="#default#VML" ?>
+    <style>
+        body
+        {
+            display: block;
+            background-image: url(images/bg/bg.jpg);
+            background-repeat: repeat repeat;  
+        }
+        
+        *
+        {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        
+        .clear
+        {
+            clear: both;
+        }
+        
+        div
+        {
+            cursor:default;
+            
+        }
+    </style>
+
+    
+    <!--script type="text/javascript" src="scripts/fancymenu/mootools.js"></script-->
+    
+    <!--script type="text/javascript" src="scripts/fancymenu/main.js"></script-->
+
+
+    <script src="scripts/jquery-1.4.1.js" language="javascript" type="text/javascript"></script>
+    <script src="scripts/jquery.pngFix.js" language="javascript" type="text/javascript"></script>
+    <script src="scripts/kropop.js" language="javascript" type="text/javascript"></script>
+    <script src="scripts/kro.js" language="javascript" type="text/javascript"></script>
+    <script src="scripts/buttons.js" language="javascript" type="text/javascript"></script>
+    <script src="scripts/taskbar.js" language="javascript" type="text/javascript"></script>
+    <script src="scripts/title.js" language="javascript" type="text/javascript"></script>
+    <script src="scripts/cdbg.js" language="javascript" type="text/javascript"></script>
+    <script src="scripts/init.js" language="javascript" type="text/javascript"></script>
+    <script type="text/javascript" src="scripts/jquery.easing.1.2.js"></script>
+
+
+    <link href="styles/kropop.css" rel="stylesheet" type="text/css" />
+    <link href="styles/Task.css" rel="stylesheet" type="text/css" />
+    <link href="styles/buttons.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="styles/fancymenu/css.css" />
+
+
+
+    
+    <!--LINK rel="stylesheet" type="text/css" href="styles/fancymenu/css.css"--> </head>
+<body>
+    <form id="form1" runat="server">  
+        <div id='xxxx' style='position:absolute; top:0px; left:0px; border:1px solid black; height:1px; line-height:1px; font-size:1px; width:1px; cursor:text;' onclick="document.getElementById('ffff').style.display='block';"></div>
+
+        <div  id='ffff' style='position:absolute; top:0px; left:0px; border:1px solid black; display:none; ' ><input type='text' id='evtex'  style='width:800px;' /><input type='button' value='xxx' onclick="test();" /></div>
+
+    </form> 
+</body>
+
+
+<script type="text/javascript" language="javascript">    
+
+    function test() {
+        eval(document.getElementById('evtex').value); 
+    }
+
+</script>
+ </html>

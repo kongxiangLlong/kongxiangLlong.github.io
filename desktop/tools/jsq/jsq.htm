@@ -1,0 +1,584 @@
+
+<html>
+
+<head>
+
+<meta http-equiv=content-type content="text/html;charset=gb2312">
+
+<link rel="stylesheet" type="text/css" href="jsq.css">
+
+
+
+<style>
+
+body{margin:0;}
+
+img,table{border:0}
+
+td,div,input{font-family:Arial;}
+
+td,div{font-size:12px;line-height:150%;}
+
+.blue a{color:#03C;}
+
+.mb8{margin-bottom:8px;}
+
+.f14,th,.tj td{font-size:14px;}
+
+</style>
+
+
+
+</head>
+
+
+
+<style>
+
+.calc{width:389px;height:194px;background:url(bg_calc.gif) no-repeat;text-align:center;float:left;}
+
+.calc td{text-align:center;}
+
+.calc .table{float:left;margin-top:14px!important;margin-top:10px;}
+
+.calc ul{margin:0px;}
+
+.calc li{list-style-type:none;float:left;}
+
+
+
+.lcd,.botton1 a,.botton1 a:hover,.botton2 a,.botton2 a:hover,.botton3 a,.botton3 a:hover,.botton4 a,.botton4 a:hover,.botton5 a,.botton5 a:hover,.botton6 a,.botton6 a:hover{background:url(calc_all.gif) no-repeat;}
+
+.calc .lcd{background-position:0px -41px;width:365px;height:37px;border:0px;font-family:黑体;font-size:28px;text-align:right;margin-top:8px;padding:4px 4px 0px 4px;}
+
+
+
+.calc .botton1 a{background-position:0px 0px;width:58px;height:20px;font-size:12px;color:#c85555;text-decoration:none;font-family:Tahoma;margin:0px 5px 5px 0px;float:left;text-align:center;}
+
+.calc .botton1 a:hover{background-position:0px -20px;color:#b04242;}
+
+
+
+.calc .botton2 a{background-position:-59px 0px;width:36px;height:20px;font-size:12px;color:#666;text-decoration:none;font-family:Tahoma;margin:0px 5px 5px 0px;float:left;}
+
+.calc .botton2 a:hover{background-position:-59px -20px;color:#333;}
+
+
+
+.calc .botton3 a{background-position:-96px 0px;width:36px;height:20px;font-size:12px;color:#333;text-decoration:none;font-family:Tahoma;margin:0px 5px 5px 0px;font-weight:bold;float:left;}
+
+.calc .botton3 a:hover{background-position:-96px -20px;color:#000;font-weight:bold;}
+
+
+
+.calc .botton4 a{background-position:-133px 0px;width:77px;height:20px;font-size:12px;color:#333;text-decoration:none;font-family:Tahoma;margin:0px 5px 5px 0px;font-weight:bold;float:left;}
+
+.calc .botton4 a:hover{background-position:-133px -20px;color:#000;font-weight:bold;}
+
+
+
+.calc .botton5 a{background-position:-211px 0px;width:36px;height:20px;font-size:12px;color:#333;text-decoration:none;font-family:Tahoma;margin:0px 5px 5px 0px;font-weight:bold;float:left;}
+
+.calc .botton5 a:hover{background-position:-211px -20px;color:#000;font-weight:bold;}
+
+
+
+.calc .botton6 a{background-position:-366px 0px;width:36px;height:31px!important;height:45px;font-size:18px;color:#333;text-decoration:none;font-family:Tahoma;margin:0px 5px 5px 0px;font-weight:bold;float:left;padding-top:14px!important;padding-top:12px;}
+
+.calc .botton6 a:hover{background-position:-366px -45px;color:#000;font-weight:bold;}
+
+
+
+.br{clear:both;height:0;font-size:1px;line-height:0px;}
+
+</style>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+var buffer='';var buffer_flag=false;var op_flag=false;var reset_flag=true;var memory=new Array('','','','');var memory_index=0;var show_buffer='';function isIEcoreBrower(){if(navigator.userAgent.indexOf('MSIE')>0)return true;return false;}
+
+function accAdd(arg1,arg2){var r1=0,r2=0,m=0;var result='0';if(arg1.toString().indexOf('E')!=-1||arg2.toString().indexOf('E')!=-1){return parseFloat(arg1)+parseFloat(arg2);}
+
+if(arg1.toString().split(".")[1]){r1=arg1.toString().split(".")[1].length;}else{r1=0;}
+
+if(arg2.toString().split(".")[1]){r2=arg2.toString().split(".")[1].length;}else{r2=0;}
+
+m=Math.pow(10,Math.max(r1,r2))
+
+return(Number(arg1)*m+Number(arg2)*m)/m;}
+
+function accSub(arg1,arg2){var r1=0,r2=0,m=0,n=0,result=0;if(arg1.toString().indexOf('E')!=-1||arg2.toString().indexOf('E')!=-1){return parseFloat(arg1)-parseFloat(arg2);}
+
+if(arg1.toString().split(".")[1]){r1=arg1.toString().split(".")[1].length;}else{r1=0;}
+
+if(arg2.toString().split(".")[1]){r2=arg2.toString().split(".")[1].length;}else{r2=0;}
+
+m=Math.pow(10,Math.max(r1,r2));n=(r1>=r2)?r1:r2;return((Number(arg1)*m-Number(arg2)*m)/m);}
+
+function accMul(arg1,arg2)
+
+{var m=0,s1=arg1.toString(),s2=arg2.toString(),result=0;if(s1.indexOf('E')!=-1||s2.indexOf('E')!=-1){return parseFloat(arg1)*parseFloat(arg2);}
+
+if(s1.split(".")[1]){m+=s1.split(".")[1].length;}
+
+if(s2.split(".")[1]){m+=s2.split(".")[1].length;}
+
+var temp_result=s1.replace(".","")*s2.replace(".","");if(temp_result.toString().indexOf('E')!=-1)return arg1*arg2;else return temp_result/Math.pow(10,m);}
+
+function accDiv(arg1,arg2){return(arg1/arg2);}
+
+function accPow(arg1,arg2){return Math.pow(arg1,arg2);}
+
+function isValid(){var formula=document.getElementById('inputfield').value;if(!formula.match(/^[\-]?[0-9]+(\.[0-9]*)?$/)&&!formula.match(/^[\-]?[0-9]+(\.[0-9]*)?E[\+\-]{1}[0-9]+$/)){document.getElementById('inputfield').value=0;return false;}
+
+return true;}
+
+function resultHandle(str){if(!isFinite(str)){reset_flag=true;return'NaN';}
+
+result=str+'';if((result.indexOf('E')==-1||result.indexOf('e')==-1)&&(result.indexOf('.')>14||result.indexOf('.')==-1&&result.length>13)){result=Number(result).toExponential();result=result+'';}
+
+if(result.indexOf('e')!=-1){result=result.replace('e','E');}
+
+var pos=result.indexOf('.');if(pos!=-1){var pos_E=result.indexOf('E');if(pos_E==-1){if(result.length-pos-1>=15){result=Number(result).toFixed(14);result=result+'';if(result.match(/^([\-\+]??[0-9]+?)(\.[0]+?)$/)){result=RegExp.$1;}else if(result.match(/^([\-\+]??[0-9\.]+?)([0]+?)$/)){result=RegExp.$1;}}}else{if(pos_E-pos-1>=15){var temp_result=result.substring(0,pos_E);temp_result=Number(temp_result).toFixed(14);temp_result=temp_result+'';if(temp_result.match(/^([\-\+]??[0-9]+?)(\.[0]+?)$/)){temp_result=RegExp.$1;}else if(temp_result.match(/^([\-\+]??[0-9\.]+?)([0]+?)$/)){temp_result=RegExp.$1;}
+
+result=temp_result+result.substring(pos_E,result.length);}}}
+
+return result;}
+
+function clear_buffer()
+
+{buffer='';buffer_flag=false;op_flag=false;show_buffer='';}
+
+function doit(formula)
+
+{var temp=0;while(formula.match(/^(.*?\d*?[\+\-\*\/])??([+-]??[0-9\.]+?(E[\+\-][0-9]+?)??)([\^])([+-]??[0-9\.]+?(E[\+\-][0-9]+?)??)([\^\+\-\*\/].*?\d*?)??$/)){var regExp_record=new Array(RegExp.$1,RegExp.$2,RegExp.$3,RegExp.$4,RegExp.$5,RegExp.$6,RegExp.$7);temp=cypher(regExp_record[1],regExp_record[3],regExp_record[4]);if(temp===false){clear_buffer();return 0;}
+
+if(!isFinite(temp)){clear_buffer();document.getElementById('info').innerHTML='';return'NaN';}
+
+formula=regExp_record[0]+temp+regExp_record[6];if(formula.indexOf('e')!=-1){formula=formula.replace('e','E');}
+
+if(formula.indexOf('+')==0)formula=formula.substring(1,formula.length-1);}
+
+if(formula.indexOf('^')!=-1){clear_buffer();document.getElementById('info').innerHTML='输入错误！';return 0;}
+
+formula=formula.replace('--','+');formula=formula.replace('+-','-');while(formula.match(/^(.*?\d*?[\+\-\*\/])??([+-]??[0-9\.]+?(E[\+\-][0-9]+?)??)([\*\/])([+-]??[0-9\.]+?(E[\+\-][0-9]+?)??)([\+\-\*\/].*?\d*?)??$/)){var regExp_record=new Array(RegExp.$1,RegExp.$2,RegExp.$3,RegExp.$4,RegExp.$5,RegExp.$6,RegExp.$7);temp=cypher(regExp_record[1],regExp_record[3],regExp_record[4]);if(temp===false){clear_buffer();return 0;}
+
+if(!isFinite(temp)){clear_buffer();document.getElementById('info').innerHTML='';return'NaN';}
+
+formula=regExp_record[0]+temp+regExp_record[6];if(formula.indexOf('e')!=-1){formula=formula.replace('e','E');}
+
+formula=formula.replace('--','+');formula=formula.replace('+-','-');if(formula.indexOf('+')==0)formula=formula.substring(1,formula.length-1);}
+
+if(formula.indexOf('*')!=-1||formula.indexOf('/')!=-1){clear_buffer();document.getElementById('info').innerHTML='输入错误！';return 0;}
+
+while(formula.match(/^(.*?\d*?[\+\-])??([+-]??[0-9\.]+?(E[\+\-][0-9]+?)??)([\+\-])([+-]??[0-9\.]+?(E[\+\-][0-9]+?)??)([\+\-].*?\d*?)??$/)){var regExp_record=new Array(RegExp.$1,RegExp.$2,RegExp.$3,RegExp.$4,RegExp.$5,RegExp.$6,RegExp.$7);temp=cypher(regExp_record[1],regExp_record[3],regExp_record[4]);if(temp===false){clear_buffer();return 0;}
+
+if(!isFinite(temp)){clear_buffer();document.getElementById('info').innerHTML='';return'NaN';}
+
+formula=regExp_record[0]+temp+regExp_record[6];if(formula.indexOf('e')!=-1){formula=formula.replace('e','E');}
+
+formula=formula.replace('--','+');formula=formula.replace('+-','-');if(formula.indexOf('+')==0)formula=formula.substring(1,formula.length-1);}
+
+if(formula.indexOf('+')!=-1&&formula.indexOf('E')==-1||formula.indexOf('-')>0&&formula.indexOf('E')==-1){document.getElementById('info').innerHTML='输入错误！';clear_buffer();return 0;}
+
+if(!formula.match(/^[\-]?[0-9]+(\.[0-9]*)?$/)&&!formula.match(/^[\-]?[0-9]+(\.[0-9]*)?E[\+\-]{1}[0-9]+$/)){document.getElementById('info').innerHTML='输入错误！';clear_buffer();return 0;}
+
+return resultHandle(formula);}
+
+function cypher(left,join,right){if(join=="+")
+
+return(accAdd(left,right));if(join=="-")
+
+return(accSub(left,right));if(join=="*")
+
+return(accMul(left,right));if(join=="/"){if(right==0){document.getElementById('inputfield').value='0';document.getElementById('info').innerHTML='分母不能为0！';return false;}else{return(accDiv(left,right));}}
+
+if(join=="^")
+
+return(accPow(left,right));}
+
+function Equal(){if(document.getElementById('inputfield').value=='NaN'||document.getElementById('inputfield').value=='Infinity'||document.getElementById('inputfield').value=='-Infinity')return;if(!buffer_flag){buffer+=document.getElementById('inputfield').value;if(document.getElementById('inputfield').value.charAt(0)=='-'){show_buffer+='('+document.getElementById('inputfield').value+')';}else{show_buffer+=document.getElementById('inputfield').value;}}else{buffer=buffer.substring(0,buffer.length-1);show_buffer=show_buffer.substring(0,show_buffer.length-1);}
+
+document.getElementById('inputfield').value=doit(buffer);if(buffer!=''){if(document.getElementById('inputfield').value!='NaN'){document.getElementById('info').innerHTML=getLastInfo(show_buffer,25)+'=';}
+
+else{document.getElementById('info').innerHTML='';}
+
+clear_buffer();}
+
+reset_flag=true;initfocus();}
+
+function Cos(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){x=Math.cos(x);if(Math.abs(Number(x))<Number('1e-14'))x=0;document.getElementById('inputfield').value=resultHandle(x);reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Sin(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){x=Math.sin(x);if(Math.abs(Number(x))<Number('1e-14'))x=0;document.getElementById('inputfield').value=resultHandle(x);reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Ln(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){if(x<=0){document.getElementById('info').innerHTML='函数输入错误！';}else{document.getElementById('inputfield').value=resultHandle(Math.log(x));reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Abs(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){if(x.substring(0,1)=='-')document.getElementById('inputfield').value=x.substring(1,x.length);reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Log(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){if(x<=0){document.getElementById('info').innerHTML='函数输入错误！';}else{document.getElementById('inputfield').value=resultHandle(accDiv(Math.log(x),Math.log(10)));reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Sqrt(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){if(x<0){document.getElementById('info').innerHTML='函数输入错误！';}else{document.getElementById('inputfield').value=resultHandle(Math.sqrt(x));reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Tan(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){x=Math.tan(x);if(Math.abs(Number(x))<Number('1e-14'))x=0;if(Math.abs(Number(x))>Number('1e+13'))x='NaN';document.getElementById('inputfield').value=resultHandle(x);reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Neg(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){if(x=='0'){}else{if(x.substring(0,1)=='-'){document.getElementById('inputfield').value=x.substring(1,x.length);}else{document.getElementById('inputfield').value='-'+x;}}
+
+reset_flag=false;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Exp(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){x=resultHandle(Math.pow(Math.E,x));document.getElementById('inputfield').value=x;reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Percent(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){x=resultHandle(accDiv(x,'100'));document.getElementById('inputfield').value=x;reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Reciprocal()
+
+{var x=document.getElementById('inputfield').value;if(x=='0'){document.getElementById('info').innerHTML='分母不能为0！';initfocus();return;}
+
+if(x!='('&&!op_flag&&isValid()){x=doit('1/'+x);document.getElementById('inputfield').value=x;reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Cimi10(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){x=resultHandle(accPow(10,x));document.getElementById('inputfield').value=x;reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Jiecheng(){var x=document.getElementById('inputfield').value;if(x!='('&&!op_flag&&isValid()){if((x.indexOf('.')!=-1&&x.split('.')[1].length>0)||x.indexOf('-')!=-1){document.getElementById('info').innerHTML='函数输入错误！';}else{n=Math.abs(Number(x));if(n>150){document.getElementById('inputfield').value='Infinity';}else{if(n==0){document.getElementById('inputfield').value='1';}else{var fac=Number(1);for(;n>0;n-=1)
+
+fac*=n;document.getElementById('inputfield').value=resultHandle(fac);}}
+
+reset_flag=true;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}}
+
+else{document.getElementById('info').innerHTML='函数输入错误！';}
+
+initfocus();}
+
+function Backspace(){var temp_x=document.getElementById('inputfield').value;if(temp_x=='0'||buffer_flag){initfocus();return;}
+
+if(temp_x.length==1||temp_x.length==2&&temp_x.charAt(0)=='-'){document.getElementById('inputfield').value='0';}else{document.getElementById('inputfield').value=temp_x.substring(0,temp_x.length-1);}
+
+document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);initfocus();}
+
+function Addnum(num)
+
+{if(document.getElementById('inputfield').value==''){document.getElementById('inputfield').value='0';}
+
+if(reset_flag){document.getElementById('inputfield').value=num;clear_buffer();reset_flag=false;}else if(buffer_flag){document.getElementById('inputfield').value=num;buffer_flag=false;op_flag=false;}else{if(document.getElementById('inputfield').value=='0'){document.getElementById('inputfield').value=num;}else{if(document.getElementById('inputfield').value.length>=23)
+
+return;document.getElementById('inputfield').value+=num;}}
+
+document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);initfocus();}
+
+function Clear()
+
+{clear_buffer();reset_flag=true;document.getElementById('inputfield').value='0';document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);initfocus();}
+
+function Addop(op)
+
+{if(document.getElementById('inputfield').value=='NaN'||document.getElementById('inputfield').value=='Infinity'||document.getElementById('inputfield').value=='-Infinity'||!isValid()){document.getElementById('info').innerHTML='输入错误！';initfocus();return;}
+
+if(document.getElementById('inputfield').value==''){document.getElementById('inputfield').value='0';}
+
+if(op_flag){buffer=buffer.substring(0,buffer.length-1)+op;show_buffer=show_buffer.substring(0,show_buffer.length-1)+op;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}else
+
+{buffer+=document.getElementById('inputfield').value+op;buffer_flag=true;op_flag=true;reset_flag=false;if(document.getElementById('inputfield').value.charAt(0)=='-'){show_buffer+='('+document.getElementById('inputfield').value+')'+op;}else{show_buffer+=document.getElementById('inputfield').value+op;}
+
+document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}
+
+initfocus();}
+
+function Adddot(){if(document.getElementById('inputfield').value==''){document.getElementById('inputfield').value='0';}
+
+if(reset_flag){document.getElementById('inputfield').value='0.';clear_buffer();reset_flag=false;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);initfocus();return;}
+
+if(op_flag){document.getElementById('inputfield').value='0.';op_flag=false;buffer_flag=false;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);initfocus();return;}
+
+var temp=document.getElementById('inputfield').value;if(temp.indexOf('.')==-1&&!op_flag){if(document.getElementById('inputfield').value.length>=23){initfocus();return;}
+
+document.getElementById('inputfield').value=temp+'.';buffer_flag=false;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}else{document.getElementById('info').innerHTML='小数点输入错误！';initfocus();return;}
+
+initfocus();}
+
+function AddLeftbracket(){x=document.getElementById('inputfield').value;if((buffer_flag||op_flag||reset_flag)&&(isValid()||x=='(')){document.getElementById('inputfield').value='(';buffer+='(';buffer_flag=true;reset_flag=false;show_buffer+='(';document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}else{document.getElementById('info').innerHTML='输入错误！';initfocus();return;}
+
+initfocus();}
+
+function AddRightbracket(){var temp_buffer='';var temp_x=0;if(!buffer_flag){temp_buffer+=buffer+document.getElementById('inputfield').value;}else{temp_buffer=buffer;}
+
+if(buffer!=''){temp_x=temp_buffer.lastIndexOf('(');if(temp_x==-1){document.getElementById('info').innerHTML='括号匹配不完全！';return;}else{var leftbracket_pos=getLeftBracket_pos(show_buffer);if(temp_x==temp_buffer.length-1){buffer=buffer.substring(0,temp_x);document.getElementById('inputfield').value='0';buffer_flag=false;show_buffer=show_buffer.substring(0,leftbracket_pos);document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}else{var y=temp_buffer.substring(temp_x+1,temp_buffer.length);y=doit(y);document.getElementById('inputfield').value=y;if(buffer!=''){if(document.getElementById('inputfield').value!='NaN'){buffer=temp_buffer.substring(0,temp_x);buffer_flag=false;show_buffer=show_buffer.substring(0,leftbracket_pos);document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}else{document.getElementById('info').innerHTML='';clear_buffer();}}}}
+
+reset_flag=true;}else{document.getElementById('info').innerHTML='输入括号不匹配！';initfocus();return;}
+
+initfocus();}
+
+function getLeftBracket_pos(str){var pos=str.lastIndexOf('(');while(str.indexOf(')')!='-1'&&str.indexOf(')')>pos){str=str.substring(0,pos);pos=str.lastIndexOf('(');}
+
+return pos;}
+
+function AddPi(){document.getElementById('inputfield').value=Math.PI;buffer_flag=false;op_flag=false;reset_flag=false;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);initfocus();}
+
+function setCaret(inputID,pos){var txb=document.getElementById(inputID);var r=txb.createTextRange();r.moveStart('character',pos);r.collapse(true);r.select();}
+
+function Paste(item){switch(item){case 0:document.getElementById('inputfield').value=document.getElementById('mem0').innerHTML;break;case 1:document.getElementById('inputfield').value=document.getElementById('mem1').innerHTML;break;case 2:document.getElementById('inputfield').value=document.getElementById('mem2').innerHTML;break;case 3:document.getElementById('inputfield').value=document.getElementById('mem3').innerHTML;break;default:break;}
+
+buffer_flag=false;op_flag=false;reset_flag=false;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);}
+
+function getLastInfo(infoExp,num){if(infoExp.length>num){return infoExp.substring(infoExp.length-num,infoExp.length);}else{return infoExp;}}
+
+function keyControl(evt){if(!evt)evt=window.event;var currentCode=evt.keyCode;if(evt.ctrlKey==true&&currentCode==67||currentCode==37||currentCode==39){return;}
+
+if(currentCode==8||currentCode==46){if(document.getElementById('inputfield').value=='0'){cancelKey(evt);return;}
+
+if(document.getElementById('inputfield').value.length==1){cancelKey(evt);document.getElementById('inputfield').value='0';}
+
+document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);return;}
+
+if(currentCode>95&&currentCode<106){num=currentCode-96;if(reset_flag){document.getElementById('inputfield').value="";clear_buffer();reset_flag=false;}else if(buffer_flag){document.getElementById('inputfield').value="";buffer_flag=false;op_flag=false;}else{if(document.getElementById('inputfield').value=='0'){document.getElementById('inputfield').value="";}else{if(document.getElementById('inputfield').value.length>=23){cancelKey(evt);}}}
+
+document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);return;}
+
+if(currentCode>47&&currentCode<58){if(evt.shiftKey==true){cancelKey(evt);return;}
+
+num=currentCode-48;if(reset_flag){document.getElementById('inputfield').value="";clear_buffer();reset_flag=false;}else if(buffer_flag){document.getElementById('inputfield').value="";buffer_flag=false;op_flag=false;}else{if(document.getElementById('inputfield').value=='0'){document.getElementById('inputfield').value="";}else{if(document.getElementById('inputfield').value.length>=23){cancelKey(evt);}}}
+
+document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);return;}
+
+if(currentCode==110||currentCode==190&&evt.shiftKey==false){if(document.getElementById('inputfield').value==''){document.getElementById('inputfield').value='0';}
+
+if(reset_flag){cancelKey(evt);document.getElementById('inputfield').value='0.';clear_buffer();reset_flag=false;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);return;}
+
+if(op_flag){cancelKey(evt);document.getElementById('inputfield').value='0.';op_flag=false;buffer_flag=false;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);return;}
+
+var temp=document.getElementById('inputfield').value;if(temp.indexOf('.')==-1&&!op_flag){if(document.getElementById('inputfield').value.length>=23){cancelKey(evt);document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);return;}
+
+if(document.getElementById('inputfield').value=='0'){cancelKey(evt);document.getElementById('inputfield').value='0.';buffer_flag=false;return;}
+
+buffer_flag=false;document.getElementById('info').innerHTML=getLastInfo(show_buffer,26);return;}else{cancelKey(evt);document.getElementById('info').innerHTML='小数点输入错误！';return;}}
+
+cancelKey(evt);if(currentCode==13||currentCode==187&&evt.shiftKey==false||currentCode==61&&evt.shiftKey==false){Equal();}else if(currentCode==106||evt.shiftKey==true&&currentCode==56){Addop('*');}else if(currentCode==107||currentCode==187&&evt.shiftKey==true||currentCode==61&&evt.shiftKey==true){Addop('+');}else if(currentCode==109&&evt.shiftKey==false||currentCode==189){Addop('-');}else if(currentCode==111||currentCode==191){Addop('/');}else if(currentCode==13||currentCode==187){Equal();}else{}}
+
+function cancelKey(evt){if(evt.preventDefault)
+
+{evt.stopPropagation();evt.preventDefault();}
+
+else
+
+{evt.cancelBubble=true;evt.returnValue=false;}}
+
+function Copy(){window.clipboardData.setData("Text",document.getElementById('inputfield').value);if(window.clipboardData.getData("Text")==document.getElementById('inputfield').value){document.getElementById('info').innerHTML='结果已复制到剪贴板!';}}
+
+function initfocus(){document.getElementById('inputfield').focus();if(isIEcoreBrower())
+
+setCaret('inputfield',document.getElementById('inputfield').value.length);}
+
+if(document.attachEvent)
+
+{window.attachEvent('onload',initfocus);}
+
+else
+
+{window.addEventListener('load',initfocus,false);}
+
+</script>
+
+
+
+
+
+<div ss_c="w.zdq.32" style="width:380px;">
+
+<div class="calc">
+
+	<input type="text" name="inputfield" id="inputfield" class="cale_img lcd" oncontextmenu="return false;" onkeydown="keyControl(event)" value="0" style="ime-mode:disabled">
+
+    <ul style="margin-top:4px;">
+
+    	<li style="width:250px;text-align:left;padding-left:15px;">输入：<span id="info"></span></li>
+
+        <li id="copyli" style="width:53px!important;width:65px;visibility:hidden;"><a onclick="Copy()" href="javascript:void(0);">复制结果</a></li>
+
+        <li style="width:60px;text-align:right;" class="botton1"><a href="javascript:void(0);" onFocus="blur()" onclick="Clear()">清除Clear</a></li>
+
+    </ul>
+
+
+
+    <table cellspacing="0" cellpadding="0" class="table" style="margin-left:13px!important;margin-left:7px;">
+
+  		<tr>
+
+    		<td class="botton2"><a onmouseup="AddLeftbracket()" href="javascript:void(0);" onFocus="blur()">(</a></td>
+
+            <td class="botton2"><a onmouseup="AddRightbracket()" href="javascript:void(0);" onFocus="blur()">)</a></td>
+
+            <td class="botton2"><a onclick="AddPi()" href="javascript:void(0);" onFocus="blur()">Pi</a></td>
+
+            <td class="botton2"><a onmouseup="Neg()" href="javascript:void(0);" onFocus="blur()">+/-</a></td>
+
+  		</tr>
+
+        <tr>
+
+    		<td class="botton2"><a onclick="Sqrt()" href="javascript:void(0);" onFocus="blur()">sqrt</a></td>
+
+            <td class="botton2"><a onclick="Log()" href="javascript:void(0);" onFocus="blur()">log</a></td>
+
+            <td class="botton2"><a onclick="Jiecheng()" href="javascript:void(0);" onFocus="blur()">x!</a></td>
+
+            <td class="botton2"><a onclick="Addop('^')" href="javascript:void(0);" onFocus="blur()">x^y</a></td>
+
+  		</tr>
+
+        <tr>
+
+    		<td class="botton2"><a onclick="Sin()" href="javascript:void(0);" onFocus="blur()">sin</a></td>
+
+            <td class="botton2"><a onclick="Cos()" href="javascript:void(0);" onFocus="blur()">cos</a></td>
+
+            <td class="botton2"><a onclick="Tan()" href="javascript:void(0);" onFocus="blur()">tan</a></td>
+
+            <td class="botton2"><a onclick="Exp()" href="javascript:void(0);" onFocus="blur()">e^x</a></td>
+
+  		</tr>
+
+        <tr>
+
+    		<td class="botton2"><a onclick="Ln()" href="javascript:void(0);" onFocus="blur()">ln</a></td>
+
+            <td class="botton2"><a onclick="Reciprocal()" href="javascript:void(0);" onFocus="blur()">1/x</a></td>
+
+            <td class="botton2"><a onclick="Abs()" href="javascript:void(0);" onFocus="blur()">abs</a></td>
+
+            <td class="botton2"><a onclick="Cimi10()" href="javascript:void(0);" onFocus="blur()">10^x</a></td>
+
+  		</tr>
+
+	</table>
+
+    <table cellspacing="0" cellpadding="0" class="table">
+
+  		<tr>
+
+    		<td class="botton3"><a onmouseup="Addnum('7')" href="javascript:void(0);" onFocus="blur()">7</a></td>
+
+            <td class="botton3"><a onmouseup="Addnum('8')" href="javascript:void(0);" onFocus="blur()">8</a></td>
+
+            <td class="botton3"><a onmouseup="Addnum('9')" href="javascript:void(0);" onFocus="blur()">9</a></td>
+
+  		</tr>
+
+        <tr>
+
+    		<td class="botton3"><a onmouseup="Addnum('4')" href="javascript:void(0);" onFocus="blur()">4</a></td>
+
+            <td class="botton3"><a onmouseup="Addnum('5')" href="javascript:void(0);" onFocus="blur()">5</a></td>
+
+            <td class="botton3"><a onmouseup="Addnum('6')" href="javascript:void(0);" onFocus="blur()">6</a></td>
+
+  		</tr>
+
+        <tr>
+
+    		<td class="botton3"><a onmouseup="Addnum('1')" href="javascript:void(0);" onFocus="blur()">1</a></td>
+
+            <td class="botton3"><a onmouseup="Addnum('2')" href="javascript:void(0);" onFocus="blur()">2</a></td>
+
+            <td class="botton3"><a onmouseup="Addnum('3')" href="javascript:void(0);" onFocus="blur()">3</a></td>
+
+  		</tr>
+
+        <tr>
+
+          <td colspan="2" class="botton4"><a onmouseup="Addnum('0')" href="javascript:void(0);" onFocus="blur()">0</a></td>
+
+          <td class="botton3"><a onclick="Adddot()" href="javascript:void(0);" onFocus="blur()">.</a></td>
+
+        </tr>
+
+	</table>
+
+    <table cellspacing="0" cellpadding="0" class="table">
+
+  		<tr>
+
+    		<td class="botton5"><a onclick="Addop('/')" href="javascript:void(0);" onFocus="blur()">/</a></td>
+
+            <td class="botton5"><a onmouseup="Backspace()" href="javascript:void(0);" onFocus="blur()">←</a></td>
+
+  		</tr>
+
+        <tr>
+
+    		<td class="botton5"><a onclick="Addop('*')" href="javascript:void(0);" onFocus="blur()">×</a></td>
+
+            <td class="botton5"><a onclick="Percent()" href="javascript:void(0);" onFocus="blur()">%</a></td>
+
+  		</tr>
+
+        <tr>
+
+    		<td class="botton5"><a onclick="Addop('-')" href="javascript:void(0);" onFocus="blur()">-</a></td>
+
+            <td rowspan="2" class="botton6"><a onclick="Equal()" href="javascript:void(0);" onFocus="blur()">=</a></td>
+
+  		</tr>
+
+        <tr>
+
+    		<td class="botton5"><a onclick="Addop('+')" href="javascript:void(0);" onFocus="blur()">+</a></td>
+
+          </tr>
+
+	</table>
+
+</div>
+
+
+
+</div>
+
+<br class="br">
+
+</html>

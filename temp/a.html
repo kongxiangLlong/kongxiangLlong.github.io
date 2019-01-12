@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sb.append</title>  
+
+	<script src="/lib/angular/angular.min.js"></script>
+</head>
+<style type="text/css">
+	*{
+		margin:0 0;
+		padding:0 0;
+		font-family:DeliciousRoman,arial,Microsoft Yahei,\5b8b\4f53,sans-serif!important;
+		text-decoration:none;
+		font-weight:400;
+		font-style:normal;
+		word-break:break-all;
+	}
+	html,body{
+		font-family:sans-serif;
+		-ms-text-size-adjust:100%;
+		-webkit-text-size-adjust:100%;
+		width: 100%;
+		height: 100%;
+	}
+
+
+
+	textarea{
+		width: 500px;
+		height: 300px;
+		float: left;
+		box-sizing:border-box;
+	}
+
+	body{ 
+		box-sizing: border-box;
+    	text-align: center;
+	}
+
+
+	nav{
+		display: inline-block;
+	    margin: 60px auto 45px; 
+	    box-shadow: 0 1px 1px #ccc;
+	    border-radius: 2px;
+	    text-align: left;
+	}
+
+	h1{
+		box-sizing: border-box;
+		padding: 10px;		
+	}
+
+ 
+	div{
+		padding: 10px;	
+	}
+	textarea{
+		padding: 5px;
+		font-size: 16px;
+		line-height: 22px;
+	    border: 1px solid #5e5b64;
+    	border-radius: 3px;
+    	margin:10px;
+	}   
+
+	input{
+		line-height: 30px;
+		height: 30px;
+	    border: 1px solid #5e5b64;
+    	border-radius: 3px;
+    	font-size: 14px;
+    	padding: 0 5px;
+	}
+</style>
+<body  ng-app="sbappend" ng-controller="SBAppendCtrl">
+
+	<nav>
+	 	<h1>字符拼接</h1>
+		<div>			
+			<span>
+				头：
+				<input type="text" id="start" value=''   ng-model="startStr"/>
+			</span>
+			<span>
+				尾：
+				<input type="text" id="end" value=''  ng-model="endStr"/>
+			</span>
+		</div>
+
+		<textarea id='left' ng-trim="false" ng-model="leftStr"></textarea>
+		 
+		<textarea id='right' ng-trim="false"  ng-bind="append()" disabled=""> 
+		</textarea> 
+	</nav>
+
+</body>
+
+
+<script> 
+
+
+
+
+(function(angular) {
+  'use strict';
+
+
+
+	// Define a new module for our app
+	var app = angular.module("sbappend", []);
+ 
+	app.controller('SBAppendCtrl', ['$scope', function($scope) {
+ 
+		$scope.leftStr='Select T.*, T.Rowid \n From \n dual t;';
+		$scope.startStr='sb.append("';
+		$scope.endStr='");';
+
+
+ 
+ 		$scope.append=function(){  
+ 			if($scope.leftStr==""){
+ 				return "";
+ 			}
+			return  $scope.startStr
+				+$scope.leftStr
+				.replace(/\\/g,"\\\\")
+				.replace(/"/g,"\\\"")
+				.replace(/\n/g,$scope.endStr+'\n'+$scope.startStr)+$scope.endStr; 
+ 		}
+ 
+ 
+  }]);
+
+
+
+
+
+
+})(window.angular);
+
+
+
+
+ 
+</script>
+</html>
