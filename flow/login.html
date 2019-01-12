@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>Title</title>
+    <link rel="icon" type="image/png" href="img/favicon.png"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/css.css" type="text/css" >
+    <link rel="stylesheet" href="lib/element.css">
+
+    <script type="text/javascript" src="lib/axios.min.js"></script>
+    <script type="text/javascript" src="lib/vue.js"></script>
+    <script type="text/javascript" src="lib/element2.0.2.js"></script>
+</head>
+
+<style>
+
+    .dialog{
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,.8);
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .loginPage{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -150px;
+        margin-left: -175px;
+        width: 350px;
+        min-height: 300px;
+        padding: 30px 20px 20px;
+        border-radius: 8px;
+        box-sizing: border-box;
+        background-color: #fff;
+    }
+    .loginPage p{
+        color: red;
+        text-align: left;
+    }
+
+
+    #dark {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #ffffff;
+        z-index: 100;
+
+    }
+</style>
+<body>
+
+
+<div id="login" class="dialog">
+    <div class="loginPage">
+        <h1>登录</h1>
+        <el-form>
+            <el-form-item label="username">
+                <el-input type="text" id="username" v-model="formName.username" @keyup.native="keyup('username',formName.username)"></el-input>
+                <p>{{formName.usernameError}}</p>
+            </el-form-item>
+            <el-form-item label="password">
+                <el-input type="password" id="password" v-model="formName.password" @keyup.native="keyup('password',formName.password)"></el-input>
+                <p>{{formName.passwordError}}</p>
+            </el-form-item>
+            <el-button type="primary" @click="submitForm('formName')" v-bind:disabled="formName.beDisabled">提交</el-button>
+            <el-button @click="resetForm">重置</el-button>
+        </el-form>
+    </div>
+</div>
+</body>
+<script>
+
+    var login = new Vue({
+        el: '#login',
+        data: {
+            formName: {//表单中的参数
+                username: '',
+                usernameError: '',
+                password: '',
+                passwordError: '',
+                beDisabled: true
+            },
+            beShow: false//传值给父组件
+        },
+        methods: {
+
+            resetForm:function(){
+                this.formName.username = '';
+                this.formName.usernameError = '';
+                this.formName.password = '';
+                this.formName.passwordError = '';
+            },
+            submitForm:function(formName){
+                //与父组件通信传值
+                //this.$emit('showState', [this.beShow,this.formName.username])
+                //提交username password
+                var username = this.formName.username,
+                    password = this.formName.password;
+                console.log(username,password)
+
+                axios({
+                    method: 'post',
+                    url: '/doLogin',
+                    data: "username="+username+"&password="+password
+                }).then(function (response) {
+                    console.log(response)
+                }).catch(function (error) {
+                    console.log(error)
+                });
+            },
+            keyup:function(errorItem,inputContent){
+                if (errorItem === 'username') {
+                    if (inputContent === '') {
+                        this.formName.usernameError = '用户名不能为空'
+                    }else{
+                        this.formName.usernameError = '';
+                    }
+                }else if(errorItem === 'password') {
+                    if (inputContent === '') {
+                        this.formName.passwordError = '密码不能为空'
+                    }else{
+                        this.formName.passwordError = '';
+                    }
+                }
+                //对于按钮的状态进行修改
+                if (this.formName.username != '' && this.formName.password != '') {
+                    this.formName.beDisabled = false;
+                }else{
+                    this.formName.beDisabled = true;
+                }
+            }
+        },
+        beforeCreate: function () {
+            // var url = "/devflow/getWebFlowInit?_=" + (new Date()).getTime();
+            // var xhr = new XMLHttpRequest()
+            // var self = this;
+            //
+            // xhr.open('POST', url);
+            // xhr.onload = function () {
+            //     var res = JSON.parse(xhr.responseText);
+            //     self.tools = res.data.toolBtns;
+            //     self.enum = res.data.enum;
+            //     // logger(res)
+            //     loadedCount++;
+            // }
+            // xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            // xhr.send();
+        }
+    });
+
+
+</script>
+</html>

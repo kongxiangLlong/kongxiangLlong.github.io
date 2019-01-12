@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>X</title>
+    <link rel="icon" type="image/png" href="img/favicon.png"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/css.css">
+    <link rel="stylesheet" href="lib/baseElement.css">
+    <script type="text/javascript" src="lib/vue.js"></script>
+    <script src="lib/element2.0.2.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+<div id="box"> HTML
+    位置
+    <br>x:{{val.x}} <br>y:{{val.y}}
+
+
+    <div v-for="x in list" v-drag="greet" style="border:1px solid black;display: block;width: 300px;height:50px; line-height: 50px;text-align: center;margin: 5px;">
+        {{x.name}}
+    </div>
+
+</div>
+</body>
+
+<script>
+    Vue.directive('drag',//自定义指令JS
+        {
+            bind: function (el, binding ) {
+                let oDiv = el;   //当前元素
+                let self = this;  //上下文
+                oDiv.onmousedown = function (e) {
+                    //鼠标按下，计算当前元素距离可视区的距离
+                    let disX = e.clientX - oDiv.offsetLeft;
+                    let disY = e.clientY - oDiv.offsetTop;
+
+                    var newX=document.createElement(el.tagName);
+                    newX.setAttribute("style",el.getAttribute('style'));
+                    newX.innerHTML=el.innerHTML;
+                    newX.id='xsssssss';
+                    newX.style.position='absolute';
+                    newX.style.left='-1000px';
+                    newX.style.top='-1000px';
+                    document.body.appendChild(newX);
+                    document.onmousemove = function (e) {
+                        //通过事件委托，计算移动的距离
+                        let l = e.clientX - disX;
+                        let t = e.clientY - disY;
+                        //移动当前元素
+                        newX.style.left = l + 'px';
+                        newX.style.top = t + 'px';
+                        //将此时的位置传出去
+                        binding.value({x: e.pageX, y: e.pageY})
+                    };
+                    document.onmouseup = function (e) {
+
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                        document.body.removeChild(newX);
+                    };
+                };
+                el.style.cursor='pointer';
+            }
+        }
+    );
+        let vm = new Vue({
+            el: '#box',
+            data: {
+                list:[{
+                    name:'a'
+                },{
+                    name:'b'
+                },{
+                    name:'c'
+                }
+                ],
+                val: '123',
+                style: {
+                    width: '100px',
+                    height: '100px',
+                    background: 'aqua',
+                    position: 'absolute',
+                    right: '30px',
+                    top: 0
+                },
+                newD:{
+                    style:"",
+                    innerHTML:"",
+                    isShow:false
+                }
+            },
+            methods: {
+                //接受传来的位置数据，并将数据绑定给data下的val
+                greet(val){
+                    vm.val = val;
+                }
+            }
+        });
+
+
+</script>
+</html>

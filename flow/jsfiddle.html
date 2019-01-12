@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="http://sonar.ql.corp/favicon.ico">
+  <title>Split.js</title>
+  <link rel="stylesheet" href="css/css.css">
+</head>
+<body>
+    <div id="fourteen" class="split split-horizontal">
+        <div class="split content">
+            #fourteen
+        </div>
+    </div>
+    <div id="fifteen" class="split split-horizontal">
+        <div class="split content">
+            #fifteen
+        </div>
+    </div>
+    <div id="sixteen" class="split split-horizontal">
+        <div class="split content">
+            #sixteen
+        </div>
+    </div>
+</body>
+<script src="lib/split.js"></script>
+<script>
+    Split(['#fourteen', '#fifteen','#sixteen'], {
+      gutterSize: 8,
+      cursor: 'col-resize'
+    })
+
+</script>
+</html>

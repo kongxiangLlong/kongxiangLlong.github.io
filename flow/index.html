@@ -1,0 +1,414 @@
+
+<html>
+<head>
+    <title>Flow</title>
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <link rel="icon" type="image/png" href="img/favicon.png"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/css.css" type="text/css" >
+    <link rel="stylesheet" href="lib/element.css">
+    <link rel="stylesheet" href="css/tools.css" type="text/css">
+    <link rel="stylesheet" href="lib/jsoneditor.css"type="text/css">
+
+    <script type="text/javascript" src="lib/axios.min.js"></script>
+    <script type="text/javascript" src="lib/vue.js"></script>
+    <script type="text/javascript" src="lib/jsoneditor.js"></script>
+    <script type="text/javascript" src="lib/element2.0.2.js"></script>
+
+    <script type="text/javascript" src="lib/split.js"></script>
+
+
+    <script type="text/x-template" id="flow-jsoneditor-template">
+        <div class="flow-jsoneditor">
+        </div>
+    </script>
+
+    <script type="text/x-template" id="flow-input-template">
+        <div  class="flow-input el-input el-input--mini" >
+            <div class="el-input__inner" contenteditable="true" spellcheck="true" @keydown.stop="keyDown($event)">
+                <div class="nodenode"><span>a</span><span>a</span></div>
+            </div>
+        </div>
+    </script>
+
+
+</head>
+<body>
+
+<div id="dark">
+    <div id="zelda" class="ball-grid-pulse">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+</div>
+
+
+<!--按钮-->
+<div id="buttons" class="el-row" style="padding: 5px 0;">
+    <el-button-group>
+        <el-button type="primary" icon="el-icon-plus" size="small" @click="add">新建</el-button>
+        <el-button type="primary" icon="el-icon-news" size="small" @click="openDialog">打开</el-button>
+        <el-button type="primary" icon="el-icon-upload" size="small" @click="save">保存</el-button>
+        <el-button type="primary" icon="el-icon-close" size="small" @click="flowdelete">删除流程</el-button>
+        <!--<el-button type="primary" icon="el-icon-arrow-left" size="small">撤销</el-button>-->
+        <!--<el-button type="primary" icon="el-icon-arrow-right" size="small">回复</el-button>-->
+        <!--<el-button type="primary" icon="el-icon-refresh" size="small">刷新</el-button>-->
+
+    </el-button-group>
+
+    <el-button-group>
+        <el-button type="primary" icon="el-icon-circle-close" size="small" @click="eledelete" >删除元素</el-button>
+        <!--<el-button type="primary" icon="el-icon-close" size="small"></el-button>-->
+        <!--<el-button type="primary" icon="el-icon-edit" size="small"></el-button>-->
+        <!--<el-button type="primary" icon="el-icon-share" size="small"></el-button>-->
+        <!--<el-button type="primary" icon="el-icon-delete" size="small"></el-button>-->
+    </el-button-group>
+
+    <el-button-group>
+        <el-button type="primary" icon="el-icon-circle-run icon-img" size="small"  @click="flowrun">运行</el-button>
+        <el-button type="primary" icon="el-icon-circle-debug icon-img" size="small"  @click="flowdebug">调试</el-button>
+    </el-button-group>
+    <!--<el-button type="primary" icon="el-icon-edit" size="small"></el-button>-->
+    <!--<el-button type="primary" icon="el-icon-share" size="small"></el-button>-->
+    <!--<el-button type="primary" icon="el-icon-delete" size="small"></el-button>-->
+    <!--<el-button type="primary" icon="el-icon-search" size="small">搜索</el-button>-->
+    <!--<el-button type="primary" size="small">上传<i class="el-icon-upload el-icon&#45;&#45;right"></i></el-button>-->
+
+    <el-dialog
+            title="打开"
+            :visible.sync="openDialogVisible"
+            width="30%" >
+        <el-form :model="form">
+            <el-form-item label="系统标识"  >
+                <el-select v-model="form.sysFlag" placeholder="系统标识" @change="changeSysFlag"  >
+                    <el-option v-for="sF in sysFlags" selected='' :label="sF.sysName" :value="sF.sysFlag" :key="sF.id" ></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="选择流程"  >
+                <el-select v-model="form.flow" placeholder="选择流程">
+                    <el-option v-for="f in flows"  :label="f.title" :value="f"></el-option>
+                </el-select>
+            </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+        <el-button @click="openDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="open">确 定</el-button>
+      </span>
+    </el-dialog>
+
+    <!--<el-dialog-->
+            <!--title="新增系统标识"-->
+            <!--:visible.sync="openAddSysVisible"-->
+            <!--width="30%" >-->
+        <!--<el-form :model="form">-->
+
+        <!--</el-form>-->
+        <!--<span slot="footer" class="dialog-footer">-->
+        <!--<el-button @click="openAddSysVisible = false">取 消</el-button>-->
+        <!--<el-button type="primary" @click="addSys">确 定</el-button>-->
+      <!--</span>-->
+    <!--</el-dialog>-->
+
+
+</div>
+
+<!--分隔三列-->
+<div class="el-row" style="height: calc(100% - 46px);">
+    <div id="fourteen" class="split split-horizontal">
+        <div class="split content">
+            <!--控件栏-->
+            <section id="toolBtns">
+
+                <el-row :class="{ selected: cursor==selectedTool }">
+                    <el-card :body-style="{ padding: '0px' }">
+                        <div id="_btn_cursor" type="cursor" style="padding: 14px;cursor: pointer;"
+                             @mousedown="selectedTool=cursor">
+                            <span>{{cursor.remark}}</span>
+                            <div class="bottom clearfix">
+                                <img src="img/icons/cursor.png" class="image" >
+                            </div>
+                        </div>
+                    </el-card>
+                </el-row>
+
+                <el-row v-for="tool in tools" v-tool-drag :class="{ selected: tool==selectedTool}">
+                    <el-card :body-style="{ padding: '0px' }">
+                        <div :type="tool.tool" :id="'_btn_'+tool.tool" :title="tool.remark" style="padding: 14px;"
+                             @mousedown="selectedTool=tool">
+                            <span>{{tool.remark}}</span>
+                            <div class="bottom clearfix">
+                                <img :src="'img/icons/'+tool.tool+'.png'" class="image">
+                                <code>{{tool.tool}}</code>
+                            </div>
+                        </div>
+                    </el-card>
+                </el-row>
+            </section>
+        </div>
+    </div>
+
+    <div id="fifteen" class="split split-horizontal">
+        <div class="split content">
+
+            <!--编辑区-->
+            <div id="cloth">
+                <el-tabs type="border-card" style="height:100%;" v-model="tabid" closable @tab-remove="removeTab"
+                         @tab-click="clickTab">
+                    <!--<el-tab-pane>-->
+                    <!--<span slot="label"><i class="el-icon-date"></i> 我的行程</span>-->
+                    <!--<div class="clothcontent">我的行程-->
+                    <!--</div>-->
+                    <!--</el-tab-pane>-->
+                    <el-tab-pane v-for="(item, index) in tabs"
+                                 :key="item.tab_id"
+                                 :label="item.title"
+                                 :name="item.tab_id">
+                        <div class="clothcontent" v-workbench-drag @wheel.stop="mousewheel" :ref="item.tab_id+'_c'">
+
+                            <div class="workbench" :ref="item.tab_id+'_w'"
+                                 :style="{'transform': 'scale('+item.__transform_scale+')','-webkit-transform':'scale('+item.__transform_scale+')','transform-origin':item.__transform_origin,'-webkit-transform-origin':item.__transform_origin }">
+
+                                <div :id="'node_'+node.MarkId" @click.stop="nodeClick(node,$event)"
+                                     @mousedown.stop="nodeDragMouseDown(node,$event)"
+                                     @mouseenter.stop="nodeMouseEnter(node,$event)"
+                                     @mouseleave.stop="nodeMouseLeave(node,$event)" v-if="node.elementtype!='IfNode'"
+                                     v-for="node in item.nodelist" :class="['node',node.elementtype]"
+                                     :style="{'top': node.top+ 'px','left':node.left+'px' }  ">
+
+                                    <em class="el-icon-close" @click.stop="nodeRemove(node,$event)"></em>
+                                    <!--:style="{'left':'calc( 50% - '+5*getEnterLineLength(node)+'px )'}"-->
+                                    <ol class="enterLine"
+                                        @mousedown.stop="">
+                                        <!--<li v-for="junction in node.enterLine">-->
+                                            <!--<el-tooltip class="item" effect="dark" :content="junction.name"-->
+                                                        <!--placement="top">-->
+                                                <!--<a></a>-->
+                                            <!--</el-tooltip>-->
+                                        <!--</li>-->
+                                    </ol>
+                                    <table>
+                                        <tr>
+                                            <td>{{node.Text}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{node.ElementName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{getRemark(node.ElementType)}}</td>
+                                        </tr>
+                                    </table>
+                                    <!--:style="{'left':'calc( 50% - '+5*getExitLineLength(node)+'px )'}"-->
+                                    <ol class="exitLine"
+                                        @mousedown.stop="">
+                                        <!-- @mouseenter="linesmouseenter(node.exitLine) -->
+                                        <!--<li v-for="junction in node.exitLine">-->
+                                            <!--<el-tooltip class="item" effect="dark" :content="junction.name"-->
+                                                        <!--placement="bottom">-->
+                                                <!--<a></a>-->
+                                            <!--</el-tooltip>-->
+                                        <!--</li>-->
+                                        <span @mousedown.stop="olSpanMouseDown(node,$event,'exitLine')"></span>
+                                    </ol>
+                                </div>
+                                <div v-else-if="node.elementtype=='IfNode'" :id="'node_'+node.MarkId"
+                                     @click.stop="nodeClick(node,$event)"
+                                     @mousedown.stop="nodeDragMouseDown(node,$event)"
+                                     @mouseenter.stop="nodeMouseEnter(node,$event)"
+                                     @mouseleave.stop="nodeMouseLeave(node,$event)" :class="['node',node.elementtype]"
+                                     :style="{'top': node.top+ 'px','left':node.left+'px' }  ">
+
+                                    <em class="el-icon-close" @click.stop="nodeRemove(node,$event)"></em>
+                                    <ol class="enterLine"
+                                        :style="{'left':'calc( 50% - '+5*getEnterLineLength(node)+'px )'}"
+                                        @mousedown.stop="">
+                                        <li v-for="junction in node.enterLine">
+                                            <el-tooltip class="item" effect="dark" :content="junction.name"
+                                                        placement="top">
+                                                <a></a>
+                                            </el-tooltip>
+                                        </li>
+                                    </ol>
+                                    <table>
+                                        <tr>
+                                            <td>{{node.Text}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{node.ElementName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{getRemark(node.ElementType)}}</td>
+                                        </tr>
+                                    </table>
+                                    <ol class="exitLine"
+                                        :style="{'left':'calc( 50% - '+5*getExitLineLength(node)+'px )'}"
+                                        @mousedown.stop="">
+                                        <li v-for="junction in node.exitLine">
+                                            <el-tooltip class="item" effect="dark" :content="junction.name"
+                                                        placement="bottom">
+                                                <a></a>
+                                            </el-tooltip>
+                                        </li>
+                                        <span @mousedown.stop="olSpanMouseDown(node,$event,'exitLine')"></span>
+                                    </ol>
+                                </div>
+
+
+                                <svg :id="'line_'+line.MarkId" v-for="line in item.linelist" position="absolute"
+                                     version="1.1" xmlns="http://www.w3.org/2000/svg" class="line"
+                                     :style="getLineSvgStyle(line)">
+
+                                    <path :d="getLinePathD(line)" @click.stop="lineclick(line,$event)"
+                                          @mouseenter.stop="linemouseenter(line,$event)"
+                                          @mouseout="linemouseout(line,$event)" version="1.1"
+                                          xmlns="http://www.w3.org/2000/svg" stroke-width="3">
+                                    </path>
+                                    <path :d="getArrowPathD(line)" @click.stop="lineclick(line,$event)"
+                                          @mouseenter.stop="linemouseenter(line,$event)"
+                                          @mouseout="linemouseout(line,$event)" version="1.1"
+                                          xmlns="http://www.w3.org/2000/svg">
+                                    </path>
+                                </svg>
+
+                            </div>
+
+                        </div>
+                    </el-tab-pane>
+                </el-tabs>
+            </div>
+        </div>
+    </div>
+    <div id="sixteen" class="split split-horizontal">
+        <div class="split content">
+            <!--属性-->
+            <div id="property">
+                <el-collapse v-model="activeNames">
+                    <el-collapse-item title="流程属性" name="flow">
+                        <el-form ref="form" :model="flow" size="mini" label-width="30%">
+                            <el-form-item label="流程前段标识">
+                                <el-input v-model.number="flow.tab_id" readonly></el-input>
+                            </el-form-item>
+                            <el-form-item label="流程id">
+                                <el-input v-model.number="flow.id" readonly></el-input>
+                            </el-form-item>
+                            <el-form-item label="流程标识">
+                                <el-input v-model.number="flow.name"></el-input>
+                            </el-form-item>
+                            <el-form-item label="流程名称">
+                                <el-input v-model.number="flow.title"></el-input>
+                            </el-form-item>
+                            <el-form-item label="流程所属系统标识">
+                                <el-select v-model="flow.sysFlag" placeholder="系统标识" v-loading="sysFlagLoading"  >
+                                    <el-option v-for="sF in sysFlags"  :label="sF.sysName" :value="sF.sysFlag" :key="sF.id"></el-option>
+                                </el-select>
+
+                                <el-button-group>
+                                <el-button type="primary" icon="el-icon-refresh"   @click="initSys"></el-button>
+                                <!--<el-button type="primary" icon="el-icon-plus"   @click="openAddSys"></el-button>-->
+                                </el-button-group>
+                            </el-form-item>
+                            <el-form-item label="流程描述">
+                                <el-input v-model.number="flow.description"></el-input>
+                            </el-form-item>
+                            <el-form-item label="流程创建时间">
+                                <el-input v-model.number="flow.createDate" readonly></el-input>
+                            </el-form-item>
+                            <el-form-item label="流程最新修改时间">
+                                <el-input v-model.number="flow.updateDate" readonly></el-input>
+                            </el-form-item>
+                        </el-form>
+                    </el-collapse-item>
+
+                    <el-collapse-item title="元素属性" name="node" v-show="isNode">
+                        <el-form ref="form" :model="node" size="mini" label-width="30%">
+                            <el-form-item label="节点id">
+                                <el-input v-model.number="node.MarkId" readonly></el-input>
+                            </el-form-item>
+                            <el-form-item label="名称">
+                                <el-input v-model="node.Text"></el-input>
+                            </el-form-item>
+                            <el-form-item label="元素标识">
+                                <el-input v-model="node.ElementName"></el-input>
+                            </el-form-item>
+                            <el-form-item label="元素类型">
+                                <el-input v-model="node.ElementType" readonly></el-input>
+                            </el-form-item>
+                            <el-form-item label="坐标top">
+                                <el-input-number v-model.number="node.top" controls-position="right"></el-input-number>
+                            </el-form-item>
+                            <el-form-item label="坐标left">
+                                <el-input-number v-model.number="node.left" controls-position="right"></el-input-number>
+                            </el-form-item>
+                            <el-form-item :label="attr.name+' ['+attr.type+']'" v-for="attr in xxx(nodeAttrs)"  >
+
+
+                                <el-select v-if="getEnum(attr.type)!=undefined" v-model="node[attr.key]" :placeholder="attr.name">
+                                    <el-option v-for="item in getEnum(attr.type)"  :label="item" :value="item" :key="item" ></el-option>
+                                </el-select>
+
+
+
+                                <flow-jsoneditor v-else-if=" attr.type=='Map' " v-model='node[attr.key]' :readonly="attr.readonly" default="{}"></flow-jsoneditor>
+
+
+                                <flow-jsoneditor v-else-if="  attr.type=='List' " v-model='node[attr.key]' :readonly="attr.readonly"  default="[]"></flow-jsoneditor>
+
+                                <el-input v-else-if="attr.readonly" v-model='node[attr.key]' readonly></el-input>
+
+
+                                <el-input v-else v-model='node[attr.key]'></el-input>
+
+
+
+                                <flow-input></flow-input>
+                                {{node[attr.key]}}
+                            </el-form-item>
+                        </el-form>
+                    </el-collapse-item>
+
+
+                    <el-collapse-item title="元素属性" name="line" v-show="isLine">
+                        <el-form ref="form" :model="line" size="mini" label-width="30%">
+                            <el-form-item label="节点id">
+                                <el-input v-model.number="line.MarkId" readonly></el-input>
+                            </el-form-item>
+                            <el-form-item label="名称">
+                                <el-input v-model="line.Text"></el-input>
+                            </el-form-item>
+                            <el-form-item label="元素标识">
+                                <el-input v-model="line.ElementName"></el-input>
+                            </el-form-item>
+                            <el-form-item label="元素类型">
+                                <el-input v-model="line.ElementType" readonly></el-input>
+                            </el-form-item>
+                            <el-form-item label="前节点id">
+                                <el-input v-model.number="line.PreNodeId" readonly></el-input>
+                            </el-form-item>
+                            <el-form-item label="后节点id">
+                                <el-input v-model.number="line.NextNodeId" readonly></el-input>
+                            </el-form-item>
+                            <el-form-item label="连线类型">
+                                <el-input v-model="line.linetype" readonly></el-input>
+                            </el-form-item>
+                        </el-form>
+                    </el-collapse-item>
+                </el-collapse>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+
+<script type="text/javascript" src="js/js.js"></script>
+</html>
