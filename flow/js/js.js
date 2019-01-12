@@ -479,6 +479,12 @@ var toolBtns = new Vue({
         // }
         // xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         // xhr.send();
+
+
+        setTimeout(function(){
+
+            loadedCount++;
+        },2000);
     }
 });
 

@@ -21,6 +21,10 @@ body {
 }
 
 
+#dark{
+    width: 100%;
+    height: 100%;
+}
 
 #zelda {
     width: 100px;
@@ -458,11 +462,11 @@ ol.enterLine li a, ol.exitLine li a {
 }
 
 .el-icon-circle-run {
-    background-image: url(/img/btns/run.png);
+    background-image: url(../img/btns/run.png);
 }
 
 .el-icon-circle-debug {
-    background-image: url(/img/btns/debug.png);
+    background-image: url(../img/btns/debug.png);
 }
 
 
