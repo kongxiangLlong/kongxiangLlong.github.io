@@ -1,0 +1,2010 @@
+{
+	"status": 4,
+	"message": null,
+	"data": {
+		"toolBtns": [{
+			"tool": "BaseLine",
+			"type": "LINE",
+			"remark": "节点连线",
+			"attrs": {
+				"PreNodeId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "上一个节点",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"NextNodeId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "下一个节点",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Description": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "描述",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "BeginNode",
+			"type": "BEGIN",
+			"remark": "开始",
+			"attrs": {
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"RequestParam": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "参数",
+					"remark": "",
+					"type": "Map",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "EndNode",
+			"type": "END",
+			"remark": "结束",
+			"attrs": {
+				"EnterLineId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Result": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "Object",
+					"required": false
+				},
+				"Step": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "步数",
+					"remark": "流程节点属于第几步(最远距离)",
+					"type": "Integer",
+					"required": false
+				},
+				"IsThreads": {
+					"readonly": false,
+					"defaultValue": "false",
+					"name": "是否启用新线程",
+					"remark": "",
+					"type": "Boolean",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "Base64ExeNode",
+			"type": "EXE",
+			"remark": "Base64加密节点",
+			"attrs": {
+				"Source": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "需要加密的字符串",
+					"remark": "非字符将会被转换为json",
+					"type": "Object",
+					"required": true
+				},
+				"IsEncode": {
+					"readonly": false,
+					"defaultValue": "true",
+					"name": "是加密",
+					"remark": "默认是加密 true ",
+					"type": "Boolean",
+					"required": false
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "BrowserOpenNode",
+			"type": "EXE",
+			"remark": "打开浏览器",
+			"attrs": {
+				"Headers": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "HTTP头",
+					"remark": "..",
+					"type": "HttpHeaders",
+					"required": false
+				},
+				"Url": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "URL地址",
+					"remark": "..",
+					"type": "String",
+					"required": false
+				},
+				"KeyWords": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "关键字",
+					"remark": "..",
+					"type": "String",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "CallBackExeNode",
+			"type": "EXE",
+			"remark": "回调节点",
+			"attrs": {
+				"TsakId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "任务id,taskId",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Data": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "数据",
+					"remark": "",
+					"type": "Object",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "CommonUtilsGetRowKeyExeNode",
+			"type": "EXE",
+			"remark": "CommonUtils类GetRowKey方法执行",
+			"attrs": {
+				"Account": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "账号参数",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"WebSite": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "站点参数",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"UserId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "用户编号参数",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"RowKey": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "rowKey",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ResultId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "resultId",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "CrawlerFlowExceptionNode",
+			"type": "EXE",
+			"remark": "抛出异常 ",
+			"attrs": {
+				"Status": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "异常编号",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Msg": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "强制信息",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "DateFormatExeNode",
+			"type": "EXE",
+			"remark": "日期格式化",
+			"attrs": {
+				"Source": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "源",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"SourceFormat": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "源 格式",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ResultFormat": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"DateCalculate": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日期加减对应位置",
+					"remark": "",
+					"type": "DateCalculate",
+					"required": false
+				},
+				"Amount": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "浮动值",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "DocumentElementExeNode",
+			"type": "EXE",
+			"remark": "Document元素操作",
+			"attrs": {
+				"Document": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "jsoup中的Document对象",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"CssQueryMap": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "需要获取的元素与其cssQuery值",
+					"remark": "{\"txtUsername\":\"#txtUsername\",\n\"txtPassword\":\"#txtPassword\",",
+					"type": "Map",
+					"required": true
+				},
+				"ElementMap": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "获取到的元素Map",
+					"remark": "",
+					"type": "Map",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "EncryptExeNode",
+			"type": "EXE",
+			"remark": "加密节点",
+			"attrs": {
+				"EncryptType": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "加密类型",
+					"remark": "加密类型 MD5，SHA1",
+					"type": "EncryptType",
+					"required": true
+				},
+				"Source": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "需要加密的字符串",
+					"remark": "非字符将会被转换为json",
+					"type": "Object",
+					"required": true
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "FilterDataExeNode",
+			"type": "EXE",
+			"remark": "数据过滤节点",
+			"attrs": {
+				"Source": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "源数据",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "Object",
+					"required": false
+				},
+				"FilterIfOperator": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "过滤比较方式",
+					"remark": "",
+					"type": "IfOperator",
+					"required": true
+				},
+				"Value": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "过滤比较值",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "FlowExeNode",
+			"type": "EXE",
+			"remark": "执行流程节点",
+			"attrs": {
+				"Param": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "参数",
+					"remark": "",
+					"type": "Map",
+					"required": false
+				},
+				"FlowName": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "流程标识",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "Object",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "HbaseLoadExeNode",
+			"type": "EXE",
+			"remark": "Hbase获取节点",
+			"attrs": {
+				"Account": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "账号参数",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"WebSite": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "站点参数",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"UserId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "用户编号参数",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ResultId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "查询结果id参数",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ResultMap": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "Map",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "HtmlParseDocumentExeNode",
+			"type": "EXE",
+			"remark": "HTMLJsoup转换",
+			"attrs": {
+				"Html": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "HTML字符串",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Document": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "jsoup中的Document对象",
+					"remark": "",
+					"type": "Object",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "HttpRequestExeNode",
+			"type": "EXE",
+			"remark": "HTTP请求",
+			"attrs": {
+				"Url": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "URL",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"HttpMethod": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "HTTP请求方式默认GET",
+					"remark": "",
+					"type": "HttpMethod",
+					"required": false
+				},
+				"RequestParams": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "参数Map",
+					"remark": "",
+					"type": "Map",
+					"required": false
+				},
+				"RequestHeaders": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "HTTP头",
+					"remark": "",
+					"type": "Map",
+					"required": false
+				},
+				"RequestCookie": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "请求的Cookie值",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Response": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "返回的Response",
+					"remark": "",
+					"type": "HttpResponse",
+					"required": false
+				},
+				"ResponseBody": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "返回的字符串",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ResponseHeaders": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "返回的HTTP头",
+					"remark": "",
+					"type": "Map",
+					"required": false
+				},
+				"ResponseCookie": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "返回的Cookie",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"StatusCode": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "请求状态码",
+					"remark": "",
+					"type": "int",
+					"required": false
+				},
+				"CodeError": {
+					"readonly": false,
+					"defaultValue": "true",
+					"name": "请求状态非200是否报异常",
+					"remark": "",
+					"type": "Boolean",
+					"required": false
+				},
+				"ProxyMode": {
+					"readonly": false,
+					"defaultValue": "DEFAULT",
+					"name": "代理模式",
+					"remark": "DEFAULT、PROXY、NOPROXY",
+					"type": "ProxyMode",
+					"required": false
+				},
+				"ProxyFlag": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "代理请求Flag",
+					"remark": "只有在 ProxyMode==PROXY 时有效",
+					"type": "String",
+					"required": false
+				},
+				"ProxyReTryNum": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "代理请求重试次数 ",
+					"remark": "只有在 Flow 有 proxy不为null时 有效",
+					"type": "Integer",
+					"required": false
+				},
+				"SocketTimeout": {
+					"readonly": false,
+					"defaultValue": "3000",
+					"name": "socketTimeout",
+					"remark": "",
+					"type": "Integer",
+					"required": false
+				},
+				"ConnectTimeout": {
+					"readonly": false,
+					"defaultValue": "3000",
+					"name": "connectTimeout",
+					"remark": "",
+					"type": "Integer",
+					"required": false
+				},
+				"SetTimeOut": {
+					"readonly": false,
+					"defaultValue": "false",
+					"name": "是否设置timeout",
+					"remark": "",
+					"type": "boolean",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "ImgVerificationCodeExeNode",
+			"type": "EXE",
+			"remark": "图片验证码识别",
+			"attrs": {
+				"ImagName": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "图片名称",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Cookie": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "请求Cookie",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Url": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "URL",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Codetype": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "超级鹰识别类型码",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Code": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "识别结果",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "InitDriverExeNode",
+			"type": "EXE",
+			"remark": "初始化浏览器  没做好",
+			"attrs": {
+				"WebDriverType": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "类型",
+					"remark": "",
+					"type": "Integer",
+					"required": true
+				},
+				"WebDriverPath": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "服务器dirver地址",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Cookie": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "cookie",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Driver": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "生成的Driver",
+					"remark": "",
+					"type": "WebDriver",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "JsonStrParseListNode",
+			"type": "EXE",
+			"remark": "Json字符串转List",
+			"attrs": {
+				"JsonStr": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "Json字符串",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"ResultList": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "转换后的List",
+					"remark": "",
+					"type": "List",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "JsonStrParseMapNode",
+			"type": "EXE",
+			"remark": "Json字符串转Map",
+			"attrs": {
+				"JsonStr": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "Json字符串",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"ResultMap": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "转换后的Map",
+					"remark": "",
+					"type": "LinkedHashMap",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "JsStrEvalExeNode",
+			"type": "EXE",
+			"remark": "Js字符串执行节点",
+			"attrs": {
+				"JsStr": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "Js字符串",
+					"remark": "严格按照js语法来",
+					"type": "String",
+					"required": true
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "Object",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "KafkaProducerExeNode",
+			"type": "EXE",
+			"remark": "发布消息到kafka中",
+			"attrs": {
+				"Topic": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "消费类型",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Data": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "数据",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "ListDataTransformExeNode",
+			"type": "EXE",
+			"remark": "数据格式转换",
+			"attrs": {
+				"Source": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "源数据",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "Object",
+					"required": false
+				},
+				"Template": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "转换的模板",
+					"remark": "会将源数据遍历 list遍历方式: for(var i=0;i<list.length;i++){   var item=list[i];....  ",
+					"type": "Map",
+					"required": true
+				},
+				"Filter": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "过滤器",
+					"remark": "例如: item.age>=18 ",
+					"type": "String",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "ListIteratorExeNode",
+			"type": "EXE",
+			"remark": "列表迭代器",
+			"attrs": {
+				"Source": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "源数据",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"Iterator": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "源数据的迭代器",
+					"remark": "",
+					"type": "Iterator",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "ListMergeExeNode",
+			"type": "EXE",
+			"remark": "列表追加",
+			"attrs": {
+				"NewItem": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "要合并的对象",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "List",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "ListTotalExeNode",
+			"type": "EXE",
+			"remark": "list统计",
+			"attrs": {
+				"Source": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "源",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"ExpConMap": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "统计条件表达式Map",
+					"remark": "{\n       \"a\":{\n               \"condition\":\"item.a>1\",\n               \"expression\":\"a+=item.b\",\n               \"initVal\":1\n           },\n       \"b\":{\n               \"condition\":\"item.a<1\",\n               \"expression\":\"b+=item.b\",\n               \"initVal\":0\n           }\n  }",
+					"type": "Map",
+					"required": true
+				},
+				"ResultMap": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "Map",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "ListUniteExeNode",
+			"type": "EXE",
+			"remark": "列表合并",
+			"attrs": {
+				"List": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "列表对象集合",
+					"remark": "[ list,list ]",
+					"type": "List",
+					"required": true
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "List",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "LogBeanExeNode",
+			"type": "EXE",
+			"remark": "日志埋点",
+			"attrs": {
+				"Province": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日志中心province",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Account": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日志中心account",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"UserId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日志中心userId",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Method": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日志中心method",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"MethondType": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日志中心methondType",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Status": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日志中心status",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Token": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日志中心token",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Message": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日志中心message",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"SellId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日志中心sellId",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Exception": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日志中心exception",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Cost": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "日志中心exception",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"LogLevel": {
+					"readonly": false,
+					"defaultValue": "INFO",
+					"name": "日志级别",
+					"remark": "INFO,DEBUG,WARN,ERROR,TRACE",
+					"type": "LogLevel",
+					"required": true
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "LoggerExeNode",
+			"type": "EXE",
+			"remark": "日志打印",
+			"attrs": {
+				"InfoList": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "需要输出的对象",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "NumValExeNode",
+			"type": "EXE",
+			"remark": "字符数字化处理",
+			"attrs": {
+				"NodeFields": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "要格式化的数据Map",
+					"remark": "",
+					"type": "Map",
+					"required": true
+				},
+				"ResultMap": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "格式化后的结果",
+					"remark": "",
+					"type": "Map",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "PageDriverExeNode",
+			"type": "EXE",
+			"remark": "浏览器打开页面",
+			"attrs": {
+				"Url": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "URL",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"UrlSourceType": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "urlSourceType",
+					"remark": "",
+					"type": "Integer",
+					"required": true
+				},
+				"Driver": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "driver",
+					"remark": "",
+					"type": "WebDriver",
+					"required": true
+				},
+				"Cookie": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "cookie",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"CurrentUrl": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "当前url",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"WindowHandles": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "windowHandles",
+					"remark": "",
+					"type": "Set",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "RandomNumGeneratorNode",
+			"type": "EXE",
+			"remark": "随机数生成",
+			"attrs": {
+				"Length": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "长度",
+					"remark": "",
+					"type": "Integer",
+					"required": true
+				},
+				"Upper": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "大写字母",
+					"remark": "",
+					"type": "Boolean",
+					"required": false
+				},
+				"Lower": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "小写字母",
+					"remark": "",
+					"type": "Boolean",
+					"required": false
+				},
+				"Num": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "数字",
+					"remark": "",
+					"type": "Boolean",
+					"required": false
+				},
+				"Symbol": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "符号",
+					"remark": "",
+					"type": "Boolean",
+					"required": false
+				},
+				"SymbolValue": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "指定符号",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "生成结果",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "RedisLoadExeNode",
+			"type": "EXE",
+			"remark": "Redis获取操作",
+			"attrs": {
+				"Type": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "类型",
+					"remark": "",
+					"type": "Type",
+					"required": true
+				},
+				"Key": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "键",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "Object",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "RedisSaveExeNode",
+			"type": "EXE",
+			"remark": "Redis保存操作",
+			"attrs": {
+				"Type": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "类型",
+					"remark": "",
+					"type": "Type",
+					"required": true
+				},
+				"Key": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "键",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Val": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "值",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "成功与否",
+					"remark": "",
+					"type": "Boolean",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "RedisSetTaskStateNode",
+			"type": "EXE",
+			"remark": "Redis保存Task状态操作",
+			"attrs": {
+				"TsakId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "任务id,taskId",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"State": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "状态",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "SleepExeNode",
+			"type": "EXE",
+			"remark": "Sleep",
+			"attrs": {
+				"Time": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "休眠时间",
+					"remark": "毫秒",
+					"type": "Integer",
+					"required": true
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "StringPatternMatcherExeNode",
+			"type": "EXE",
+			"remark": "字符串正则匹配",
+			"attrs": {
+				"Source": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "源",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"Regex": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "正则",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"Result": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "结果",
+					"remark": "",
+					"type": "Object",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"ExitLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输出线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "GjjIfNode",
+			"type": "LOGIC",
+			"remark": "公积金逻辑分流",
+			"attrs": {
+				"Expression1": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "值1",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"Expression2": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "值2",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"ExpressionType": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "值类型json/html/xml",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"Path": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "解析path",
+					"remark": "",
+					"type": "String",
+					"required": true
+				},
+				"IfOperator": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "判断方式",
+					"remark": "",
+					"type": "IfOperator",
+					"required": true
+				},
+				"CompareResult": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "判读结果",
+					"remark": "",
+					"type": "Boolean",
+					"required": false
+				},
+				"SuccLineId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "判断成功线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"FailLineId": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "判断失败线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"EnterLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "输入线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}, {
+			"tool": "IfNode",
+			"type": "LOGIC",
+			"remark": "逻辑分流",
+			"attrs": {
+				"Expression1": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "值1",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"Expression2": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "值2",
+					"remark": "",
+					"type": "Object",
+					"required": true
+				},
+				"IfOperator": {
+					"readonly": false,
+					"defaultValue": "",
+					"name": "判断方式",
+					"remark": "",
+					"type": "IfOperator",
+					"required": true
+				},
+				"CompareResult": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "判读结果",
+					"remark": "",
+					"type": "Boolean",
+					"required": false
+				},
+				"SuccLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "判断成功线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				},
+				"FailLineId": {
+					"readonly": true,
+					"defaultValue": "",
+					"name": "判断失败线",
+					"remark": "",
+					"type": "String",
+					"required": false
+				}
+			}
+		}]
+	},
+	"return_code": null
+}

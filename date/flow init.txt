@@ -1,0 +1,429 @@
+{
+	"status": 4,
+	"message": null,
+	"data": {
+		"toolBtns": [{
+			"tool": "BaseLine",
+			"type": "LINE",
+			"remark": "节点连线",
+			"attrs": {
+				"preNodeId": {
+					"name": "上一个节点",
+					"remark": "",
+					"type": "Long",
+					"readonly": false,
+					"required": false,
+					"defaultValue": ""
+				},
+				"nextNodeId": {
+					"name": "下一个节点",
+					"remark": "",
+					"type": "Long",
+					"readonly": false,
+					"required": false,
+					"defaultValue": ""
+				},
+				"description": {
+					"name": "描述",
+					"remark": "",
+					"type": "String",
+					"readonly": false,
+					"required": false,
+					"defaultValue": ""
+				},
+				"beginTime": {
+					"name": "开始时间",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"endTime": {
+					"name": "结束时间",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				}
+			}
+		}, {
+			"tool": "BeginNode",
+			"type": "BEGIN",
+			"remark": "开始",
+			"attrs": {
+				"exitLine": {
+					"name": "输出线",
+					"remark": "",
+					"type": "List",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"requestParam": {
+					"name": "参数",
+					"remark": "",
+					"type": "Map",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"beginTime": {
+					"name": "开始时间",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"endTime": {
+					"name": "结束时间",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				}
+			}
+		}, {
+			"tool": "EndNode",
+			"type": "END",
+			"remark": "结束",
+			"attrs": {
+				"enterLine": {
+					"name": "输入线",
+					"remark": "",
+					"type": "List",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"result": {
+					"name": "结果",
+					"remark": "",
+					"type": "Object",
+					"readonly": false,
+					"required": false,
+					"defaultValue": ""
+				},
+				"step": {
+					"name": "步数",
+					"remark": "流程节点属于第几步(最远距离)",
+					"type": "Integer",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"isThreads": {
+					"name": "是否启用新线程",
+					"remark": "",
+					"type": "Boolean",
+					"readonly": false,
+					"required": false,
+					"defaultValue": "false"
+				},
+				"beginTime": {
+					"name": "开始时间",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"endTime": {
+					"name": "结束时间",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				}
+			}
+		}, {
+			"tool": "HttpRequestExeNode",
+			"type": "EXE",
+			"remark": "HTTP请求",
+			"attrs": {
+				"url": {
+					"name": "URL",
+					"remark": "",
+					"type": "String",
+					"readonly": false,
+					"required": true,
+					"defaultValue": ""
+				},
+				"httpMethod": {
+					"name": "HTTP请求方式默认GET",
+					"remark": "",
+					"type": "HttpMethod",
+					"readonly": false,
+					"required": false,
+					"defaultValue": ""
+				},
+				"httpReturnType": {
+					"name": "请求返回数据类型默认JSONMAP",
+					"remark": "",
+					"type": "HttpReturnType",
+					"readonly": false,
+					"required": false,
+					"defaultValue": ""
+				},
+				"requestParams": {
+					"name": "参数Map",
+					"remark": "",
+					"type": "Map",
+					"readonly": false,
+					"required": false,
+					"defaultValue": ""
+				},
+				"requestHeaders": {
+					"name": "HTTP头",
+					"remark": "",
+					"type": "Map",
+					"readonly": false,
+					"required": false,
+					"defaultValue": ""
+				},
+				"requestCookie": {
+					"name": "请求的Cookie值",
+					"remark": "",
+					"type": "String",
+					"readonly": false,
+					"required": false,
+					"defaultValue": ""
+				},
+				"response": {
+					"name": "返回的Response",
+					"remark": "",
+					"type": "HttpResponse",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"responseBody": {
+					"name": "返回的字符串",
+					"remark": "",
+					"type": "String",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"responseJSONMap": {
+					"name": "转换后的JsonMap",
+					"remark": "",
+					"type": "Map",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"responseJSONList": {
+					"name": "转换后的JsonList",
+					"remark": "",
+					"type": "List",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"responseJsoupDocument": {
+					"name": "转换后的JsoupDocument",
+					"remark": "",
+					"type": "Object",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"responseJSON": {
+					"name": "返回的字符串",
+					"remark": "",
+					"type": "Map",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"responseHeaders": {
+					"name": "返回的HTTP头",
+					"remark": "",
+					"type": "Map",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"responseCookie": {
+					"name": "返回的Cookie",
+					"remark": "",
+					"type": "String",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"statusCode": {
+					"name": "请求状态码",
+					"remark": "",
+					"type": "int",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"codeError": {
+					"name": "请求状态非200是否报异常",
+					"remark": "",
+					"type": "Boolean",
+					"readonly": false,
+					"required": false,
+					"defaultValue": "true"
+				},
+				"enterLine": {
+					"name": "输入线",
+					"remark": "",
+					"type": "List",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"exitLine": {
+					"name": "输出线",
+					"remark": "",
+					"type": "List",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"step": {
+					"name": "步数",
+					"remark": "流程节点属于第几步(最远距离)",
+					"type": "Integer",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"isThreads": {
+					"name": "是否启用新线程",
+					"remark": "",
+					"type": "Boolean",
+					"readonly": false,
+					"required": false,
+					"defaultValue": "false"
+				},
+				"beginTime": {
+					"name": "开始时间",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"endTime": {
+					"name": "结束时间",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				}
+			}
+		}, {
+			"tool": "IfNode",
+			"type": "LOGIC",
+			"remark": "逻辑分流",
+			"attrs": {
+				"expression1": {
+					"name": "值1",
+					"remark": "",
+					"type": "Object",
+					"readonly": false,
+					"required": true,
+					"defaultValue": ""
+				},
+				"expression2": {
+					"name": "值2",
+					"remark": "",
+					"type": "Object",
+					"readonly": false,
+					"required": true,
+					"defaultValue": ""
+				},
+				"ifOperator": {
+					"name": "判断方式",
+					"remark": "",
+					"type": "IfOperator",
+					"readonly": false,
+					"required": true,
+					"defaultValue": ""
+				},
+				"compareResult": {
+					"name": "判读结果",
+					"remark": "",
+					"type": "Boolean",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"succLineId": {
+					"name": "判断成功线",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"failLineId": {
+					"name": "判断失败线",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"enterLineId": {
+					"name": "输入线",
+					"remark": "",
+					"type": "List",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"step": {
+					"name": "步数",
+					"remark": "流程节点属于第几步(最远距离)",
+					"type": "Integer",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"isThreads": {
+					"name": "是否启用新线程",
+					"remark": "",
+					"type": "Boolean",
+					"readonly": false,
+					"required": false,
+					"defaultValue": "false"
+				},
+				"beginTime": {
+					"name": "开始时间",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				},
+				"endTime": {
+					"name": "结束时间",
+					"remark": "",
+					"type": "Long",
+					"readonly": true,
+					"required": false,
+					"defaultValue": ""
+				}
+			}
+		}],
+		"enum": {
+			"DateCalculate": ["DAY_OF_YEAR", "MONTH", "DAY_OF_MONTH", "HOUR", "WEEK_OF_MONTH", "DAY_OF_WEEK_IN_MONTH", "DATE", "YEAR", "WEEK_OF_YEAR", "HOUR_OF_DAY", "MINUTE", "SECOND", "DAY_OF_WEEK", "MILLISECOND"],
+			"HttpMethod": ["TRACE", "HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"],
+			"EncryptType": ["MD5", "SHA1"],
+			"DocBy": ["XPATH", "ID", "CSSSELECTOR", "TAGNAME", "NAME"],
+			"IfOperator": ["LT", "NOTISEMPTY", "EQ", "ELT", "CONTAINS", "GT", "CONTAINSVALUE", "EGT", "LIKE", "ISNULL", "ISEMPTY", "CONTAINSKEY", "NEQ"],
+			"HttpReturnType": ["JSONMAP", "JSONLIST", "JSOUPDOCUMENT"]
+		}
+	}
+}
