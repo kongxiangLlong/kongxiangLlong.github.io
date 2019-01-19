@@ -1413,7 +1413,7 @@ var buttons = new Vue({
             });
             var that = this;
             axios({
-                method: 'post',
+                method: 'get',
                 url: '/devflow/getCrawlerSys'
             }).then(function (response) {
                 // logger(response.data.data);
