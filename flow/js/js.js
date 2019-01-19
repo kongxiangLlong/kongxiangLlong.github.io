@@ -465,7 +465,7 @@ var toolBtns = new Vue({
         }
     },
     beforeCreate: function () {
-        var url = "./date/getWebFlowInit.json?_=" + (new Date()).getTime();
+        var url = "./date/getWebFlowInit?_=" + (new Date()).getTime();
         var xhr = new XMLHttpRequest()
         var self = this;
 
@@ -1315,7 +1315,7 @@ var property = new Vue({
             var that = this;
             axios({
                 method: 'get',
-                url: '/devflow/getCrawlerSys'
+                url: './date/getCrawlerSys'
             }).then(function (response) {
                 // logger(response.data.data);
                 that.sysFlags = response.data.data;
@@ -1375,7 +1375,7 @@ var buttons = new Vue({
             var that = this;
             axios({
                 method: 'get',
-                url: '/devflow/getCrawlerFlowsBySysFlag',
+                url: './date/getCrawlerFlowsBySysFlag',
                 headers: {
                     'Content-type': 'application/x-www-form-urlencoded'
                 },
@@ -1414,7 +1414,7 @@ var buttons = new Vue({
             var that = this;
             axios({
                 method: 'get',
-                url: '/devflow/getCrawlerSys'
+                url: '/dev/flow/getCrawlerSys'
             }).then(function (response) {
                 // logger(response.data.data);
                 that.sysFlags = response.data.data;
@@ -1449,7 +1449,7 @@ var buttons = new Vue({
             var that = this;
             axios({
                 method: 'get',
-                url: '/devflow/getFlowById',
+                url: './date/getFlowById',
                 headers: {
                     'Content-type': 'application/x-www-form-urlencoded'
                 },
