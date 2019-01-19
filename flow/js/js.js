@@ -1314,7 +1314,7 @@ var property = new Vue({
             this.sysFlagLoading = true;
             var that = this;
             axios({
-                method: 'post',
+                method: 'get',
                 url: '/devflow/getCrawlerSys'
             }).then(function (response) {
                 // logger(response.data.data);
@@ -1374,7 +1374,7 @@ var buttons = new Vue({
 
             var that = this;
             axios({
-                method: 'post',
+                method: 'get',
                 url: '/devflow/getCrawlerFlowsBySysFlag',
                 headers: {
                     'Content-type': 'application/x-www-form-urlencoded'
@@ -1448,7 +1448,7 @@ var buttons = new Vue({
             var newDate = {};
             var that = this;
             axios({
-                method: 'post',
+                method: 'get',
                 url: '/devflow/getFlowById',
                 headers: {
                     'Content-type': 'application/x-www-form-urlencoded'

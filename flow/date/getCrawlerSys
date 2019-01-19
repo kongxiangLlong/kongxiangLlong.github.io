@@ -1,0 +1,20 @@
+{
+	"status": 4,
+	"message": null,
+	"data": [{
+		"id": 1,
+		"sysFlag": "zdgj",
+		"sysName": "智贷管家",
+		"sysdesc": "假的"
+	}, {
+		"id": 2,
+		"sysFlag": "yhxx",
+		"sysName": "用户信息",
+		"sysdesc": null
+	}, {
+		"id": 4,
+		"sysFlag": "asdad",
+		"sysName": "测试用的",
+		"sysdesc": null
+	}]
+}

@@ -1,0 +1,65 @@
+{
+	"status": 4,
+	"message": null,
+	"data": {
+		"title": "天气预报",
+		"id": 5,
+		"name": "tqyb",
+		"type": "",
+		"desc": "",
+		"sysFlag": "yhxx",
+		"nodelist": [{
+			"exitLine": [1511344087250],
+			"Text": "开始",
+			"ElementName": "BeginNode",
+			"ElementType": "BeginNode",
+			"MarkId": 1511344081962,
+			"left": -375.0,
+			"top": -399.5
+		}, {
+			"codeError": "true",
+			"isThreads": "false",
+			"enterLine": [1511344087250],
+			"httpMethod": "GET",
+			"url": "https://www.sojson.com/open/api/weather/json.shtml?city=node://1511344081962.requestParam.city//:node",
+			"httpReturnType": "JSONMAP",
+			"requestParams": "{}",
+			"requestHeaders": "{}",
+			"exitLine": [1523252309578],
+			"requestCookie": "",
+			"Text": "天气预报接口",
+			"ElementName": "HttpRequestExeNode",
+			"ElementType": "HttpRequestExeNode",
+			"MarkId": 1511344083058,
+			"left": -271.0,
+			"top": -232.5
+		}, {
+			"enterLine": [1523252309578],
+			"isThreads": "false",
+			"result": "node://1511344083058.responseJSONMap//:node",
+			"Text": "结束",
+			"ElementName": "EndNode",
+			"ElementType": "EndNode",
+			"MarkId": 1511344154035,
+			"left": -392.83333333333326,
+			"top": -61.16666666666667
+		}],
+		"linelist": [{
+			"Text": "",
+			"PreNodeId": 1511344081962,
+			"NextNodeId": 1511344083058,
+			"linetype": "",
+			"ElementName": "",
+			"ElementType": "BaseLine",
+			"MarkId": 1511344087250
+		}, {
+			"Text": "",
+			"PreNodeId": 1511344083058,
+			"NextNodeId": 1511344154035,
+			"linetype": "",
+			"ElementName": "",
+			"ElementType": "BaseLine",
+			"MarkId": 1523252309578
+		}]
+	}
+}
