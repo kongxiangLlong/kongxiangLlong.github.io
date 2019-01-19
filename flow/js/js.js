@@ -469,7 +469,7 @@ var toolBtns = new Vue({
         var xhr = new XMLHttpRequest()
         var self = this;
 
-        xhr.open('POST', url);
+        xhr.open('GET', url);
         xhr.onload = function () {
             var res = JSON.parse(xhr.responseText);
             self.tools = res.data.toolBtns;
