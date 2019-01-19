@@ -465,20 +465,20 @@ var toolBtns = new Vue({
         }
     },
     beforeCreate: function () {
-        // var url = "/devflow/getWebFlowInit?_=" + (new Date()).getTime();
-        // var xhr = new XMLHttpRequest()
-        // var self = this;
+        var url = "./date/getWebFlowInit.json?_=" + (new Date()).getTime();
+        var xhr = new XMLHttpRequest()
+        var self = this;
 
-        // xhr.open('POST', url);
-        // xhr.onload = function () {
-        //     var res = JSON.parse(xhr.responseText);
-        //     self.tools = res.data.toolBtns;
-        //     self.enum = res.data.enum;
-        //     // logger(res)
-        //     loadedCount++;
-        // }
-        // xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        // xhr.send();
+        xhr.open('POST', url);
+        xhr.onload = function () {
+            var res = JSON.parse(xhr.responseText);
+            self.tools = res.data.toolBtns;
+            self.enum = res.data.enum;
+            // logger(res)
+            loadedCount++;
+        }
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.send();
 
 
         setTimeout(function(){
