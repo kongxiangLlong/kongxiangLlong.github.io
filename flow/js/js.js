@@ -1414,7 +1414,7 @@ var buttons = new Vue({
             var that = this;
             axios({
                 method: 'get',
-                url: '/dev/flow/getCrawlerSys'
+                url: './date/getCrawlerSys'
             }).then(function (response) {
                 // logger(response.data.data);
                 that.sysFlags = response.data.data;
@@ -1449,7 +1449,7 @@ var buttons = new Vue({
             var that = this;
             axios({
                 method: 'get',
-                url: './date/getFlowById',
+                url: '/devflow/getFlowById',
                 headers: {
                     'Content-type': 'application/x-www-form-urlencoded'
                 },
