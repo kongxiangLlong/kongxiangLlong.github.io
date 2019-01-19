@@ -1449,7 +1449,7 @@ var buttons = new Vue({
             var that = this;
             axios({
                 method: 'get',
-                url: '/devflow/getFlowById',
+                url: './date/getFlowById',
                 headers: {
                     'Content-type': 'application/x-www-form-urlencoded'
                 },
