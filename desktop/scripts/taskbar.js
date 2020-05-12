@@ -111,7 +111,7 @@
                         "<div id='TaskbarRight' class='TaskbarBox'>" +
                             "<div class='TaskbarLine'>" +
                             "</div>" +
-                            "<a href='http://www.flyedt.com/flyedt' target='_blank' >" +
+                            "<a href='###' target='_blank' >" +
                             "<div id='TaskbarRight_box' >" +
                             "</div>" +
                             "</a>" +
