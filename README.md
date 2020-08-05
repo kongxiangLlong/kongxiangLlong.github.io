@@ -1,11 +1,11 @@
  
-纯前端展示 pc 浏览
+前端 PC浏览
 
 
-[流程 vue 18年做的 没有后台无法运行只能 展示节点拖拽等功能](./flow/index.html) 
+[2018 流程 vue 纯前端](./flow/index.html) 
 
-[模板助手 angularjs 15年做的](./temp/t.html)
+[2015 模板助手 angularjs](./temp/t.html)
 
-[字符拼接 angularjs 15年做的](./temp/a.html) 
+[2015 字符拼接 angularjs](./temp/a.html) 
 
-[桌面 jquery 11年做的](./desktop/index.html)
+[2011 桌面 ](./desktop/index.html)
