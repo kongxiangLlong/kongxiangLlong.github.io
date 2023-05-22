@@ -60,7 +60,10 @@
         json,
         message: 'Hello Vue!'
       });
-      return {}
+      const dataRef = toRefs(data);
+      return {
+        ...dataRef
+      }
     }
   }
 
