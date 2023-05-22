@@ -10,14 +10,16 @@
     <link rel="preload"
           href="https://s.cn.bing.net/th?id=OHR.BiodiverseCostaRica_ZH-CN5524154131_1920x1080.webp&amp;qlt=50"
           as="image" id="preloadBg">
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" language="javascript" type="text/javascript"></script>
 
 
-    <script type="text/javascript" src="./index.json"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
 
 </head>
 <body>
-
+<div v-for="item in json">
+    {{ item.name }}
+</div>
 
 </body>
 <style>
@@ -41,10 +43,24 @@
     }
 </style>
 <script>
-  $(document).ready(function(){
-    $.getJSON("index.json", function(data){
-      console.log(data)
-  });
-  });
+
+
+
+  const { createApp } = Vue
+  import json from 'index.json'
+  createApp({
+    data() {
+      return {
+        json,
+        message: 'Hello Vue!'
+      }
+    },
+    mounted() {
+
+    },
+    methods: {
+
+    }
+  }).mount('#app')
 </script>
 </html>
