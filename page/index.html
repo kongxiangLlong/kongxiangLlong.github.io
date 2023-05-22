@@ -17,10 +17,13 @@
 
 </head>
 <body>
-<div v-for="item in json">
-    {{ item.name }}
-</div>
+<div id="app">
 
+    <div v-for="item in json">
+        {{ item.name }}
+    </div>
+
+</div>
 </body>
 <style>
     body{
@@ -42,25 +45,25 @@
         white-space: normal;
     }
 </style>
-<script type="module">
+<script >
 
+  Object.assign(window, Vue);
 
 
   const { createApp } = Vue
   import json from './data.js'
-  createApp({
-    data() {
-      return {
+
+
+  const v3c={
+    setup(){
+      const data= reactive({
         json,
         message: 'Hello Vue!'
-      }
-    },
-    mounted() {
-
-    },
-    methods: {
-
+      });
     }
-  }).mount('#app')
+  }
+
+
+  const app = createApp(v3c).mount("#app");
 </script>
 </html>
