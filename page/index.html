@@ -19,17 +19,23 @@
 <body>
 <div id="app">
 
-    <ul style="
-    margin: auto -8px;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    display: flex;">
+    <div v-for="c in  cList">
+        <div class="title">{{c}}</div>
+        <div class="box">
+            <ul  style="
+                margin: auto -8px;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                display: flex;">
+                <li v-for="item in classes[c]" @click="click(item)" :style="{backgroundColor:(item.color?item.color:''),color:(item.color?getInverseColor(item.color):'')}" :title="item.url" >
+                    {{ item.name }}
+                </li>
 
-        <li v-for="item in json" @click="click(item)" :style="{backgroundColor:(item.color?item.color:''),color:(item.color?getInverseColor(item.color):'')}" :title="item.url" >
-            {{ item.name }}
-        </li>
+            </ul>
+        </div>
+    </div>
 
-    </ul>
+
 </div>
 </body>
 <style>
@@ -37,7 +43,18 @@
         background-image: url('https://s.cn.bing.net/th?id=OHR.CormorantBridge_ZH-CN7673299694_1920x1080.webp&qlt=50');
     }
 
-
+    .title{
+        display: inline-block;
+        width: 60px;
+        text-align: center;
+        background: rgba(57, 177, 183, 0.8);
+        margin:0 10px;
+        padding: 5px 0px;
+    }
+    .box{
+        display: inline-block;
+        width: calc(100% - 100px);
+    }
     li{
         height: 56px;
         border-radius: 6px;
@@ -70,8 +87,25 @@
 
   const v3c={
     setup(){
+
+      let cList=[];
+
+
+      const classes = json.reduce((acc, curr) => {
+          const classification = curr.classification
+          if (!acc[classification]) {
+            acc[classification] = []
+            cList.push(classification)
+          }
+          acc[classification].push(curr)
+          return acc
+        }, {}
+      )
+
+      console.log(classes,cList)
       const data= reactive({
-        json,
+        classes,
+        cList,
         message: 'Hello Vue!'
       });
 
