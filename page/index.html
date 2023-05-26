@@ -19,7 +19,7 @@
 <body>
 <div id="app">
 
-    <div v-for="c in  cList">
+    <div v-for="c in  cList" class="cdiv">
         <div class="title">{{c}}</div>
         <div class="box">
             <ul  style="
@@ -42,7 +42,9 @@
     body{
         background-image: url('https://s.cn.bing.net/th?id=OHR.CormorantBridge_ZH-CN7673299694_1920x1080.webp&qlt=50');
     }
-
+    .cdiv{
+        margin: 30px;
+    }
     .title{
         display: inline-block;
         width: 60px;
