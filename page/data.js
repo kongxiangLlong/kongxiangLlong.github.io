@@ -2,6 +2,14 @@ export default [
   {
 
     classification: '服务',
+    name: 'OA',
+    url:"http://192.168.11.121:12345/wui/index.html",
+    color:'#008df7'
+  },
+
+  {
+
+    classification: '服务',
     name: 'Nacos',
     url:"http://192.168.103.201:8868/nacos",
     color:'#252a2f'
