@@ -1,5 +1,12 @@
 export default [
   {
+    classification: '其他',
+    name: '203 1Panel',
+    url:"http://192.168.103.203:20920/80360bc907",
+    color:'#b7d2fa'
+
+  },
+  {
 
     classification: '服务',
     name: 'OA',
