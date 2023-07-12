@@ -83,11 +83,21 @@ export default [
     url: 'http://192.168.103.201:7209/user/login'
   },
 
+  {
+    classification: '系统',
+    name:'青岛屏幕',
+    url:'http://192.168.103.202:16801/'
+  },
 
   {
     classification: '原型',
     name:'狱警考核',
     url:'https://modao.cc/app/7Jxc6qHrsiy7wqE0Tbmuv#screen=slfmbkbgy4ti31o'
+  },
+  {
+    classification: '蓝湖',
+    name:'青岛屏幕',
+    url:'https://lanhuapp.com/link/#/invite?sid=lx0TFj0o'
   },
 
 
