@@ -85,8 +85,13 @@ export default [
 
   {
     classification: '系统',
-    name:'青岛屏幕',
+    name:'青岛展厅',
     url:'http://192.168.103.202:16801/'
+  },
+  {
+    classification: '系统',
+    name:'智慧农业',
+    url:'http://192.168.103.202:9800/'
   },
 
   {
