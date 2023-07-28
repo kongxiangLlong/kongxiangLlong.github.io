@@ -93,7 +93,11 @@ export default [
     name:'智慧农业',
     url:'http://192.168.103.202:9800/'
   },
-
+  {
+    classification: '系统',
+    name:'工业园区',
+    url:'http://192.168.103.202:9702/'
+  },
   {
     classification: '原型',
     name:'狱警考核',
